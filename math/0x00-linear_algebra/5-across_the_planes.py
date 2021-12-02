@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+"""
+    The shape of a matrix
+"""
+
+
 def matrix_shape(matrix):
     """
         Return the shape of a matrix.
@@ -16,11 +21,10 @@ def add_matrices2D(mat1, mat2):
     if shape_mat1 != shape_mat2:
         return None
 
-
     if len(shape_mat1) == 2:
-        sum =[ [0] * shape_mat1[1] for i in range(shape_mat1[0])]
+        sum = [[0] * shape_mat1[1] for i in range(shape_mat1[0])]
 
-    for idx_rows in range(shape_mat1[0]):
-        for idx_columns in range(shape_mat1[1]):
-            sum[idx_rows][idx_columns] = mat1[idx_rows][idx_columns] + mat2[idx_rows][idx_columns]
+    for i_rows in range(shape_mat1[0]):
+        for i_col in range(shape_mat1[1]):
+            sum[i_rows][i_colu] = mat1[i_rows][i_col] + mat2[i_rows][i_col]
     return sum
