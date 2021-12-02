@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""
+    Matrix multiplication.
+"""
 def matrix_shape(matrix):
     """
         Return the shape of a matrix.
@@ -10,6 +13,7 @@ def matrix_shape(matrix):
 
 def mat_mul(mat1, mat2):
     """
+        Matrix multiplication.
     """
     # check if the two matrices can be multiplied
     shape1 = matrix_shape(mat1)
