@@ -2,6 +2,8 @@
 """
     Matrix multiplication.
 """
+
+
 def matrix_shape(matrix):
     """
         Return the shape of a matrix.
