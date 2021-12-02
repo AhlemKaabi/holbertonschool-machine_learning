@@ -17,9 +17,16 @@ def add_matrices2D(mat1, mat2):
     """
         Adds two matrices element-wise.
     """
-    # case matrix = [] need to be fixed
-    shape_mat1 = matrix_shape(mat1)
-    shape_mat2 = matrix_shape(mat2)
+    rows1 = len(mat1)
+    print(rows1)
+    rows2 = len(mat2)
+
+    if rows1 == 0 or rows2 == 0:
+        return None
+    else:
+        # case matrix = [] need to be fixed
+        shape_mat1 = matrix_shape(mat1)
+        shape_mat2 = matrix_shape(mat2)
 
     if shape_mat1 != shape_mat2 or len(mat2) and len(mat1) == 0:
         return None
