@@ -1,6 +1,13 @@
 #!/usr/bin/env python3
-def add_arrays(arr1, arr2):
+"""
+    Adds two arrays element-wise
+"""
 
+
+def add_arrays(arr1, arr2):
+    """
+        Adds two arrays element-wise
+    """
     size_arr1 = len(arr1)
     size_arr2 = len(arr2)
 
