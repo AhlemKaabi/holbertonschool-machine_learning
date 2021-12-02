@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-    The shape of a matrix
+    Adds two matrices element-wise.
 """
 
 
@@ -14,7 +14,9 @@ def matrix_shape(matrix):
 
 
 def add_matrices2D(mat1, mat2):
-
+    """
+        Adds two matrices element-wise.
+    """
     shape_mat1 = matrix_shape(mat1)
     shape_mat2 = matrix_shape(mat2)
 
