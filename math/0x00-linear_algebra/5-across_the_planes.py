@@ -17,10 +17,6 @@ def add_matrices2D(mat1, mat2):
     """
         Adds two matrices element-wise.
     """
-    rows1 = len(mat1)
-    print(rows1)
-    rows2 = len(mat2)
-
     # case matrix = [] need to be fixed
     shape_mat1 = matrix_shape(mat1)
     shape_mat2 = matrix_shape(mat2)
