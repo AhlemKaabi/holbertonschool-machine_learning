@@ -22,8 +22,7 @@ def add_matrices2D(mat1, mat2):
     # case matrix = [] need to be fixed
     shape_mat1 = matrix_shape(mat1)
     shape_mat2 = matrix_shape(mat2)
-
-    if shape_mat1 != shape_mat2 or len(mat2) and len(mat1) == 0:
+    if shape_mat1 != shape_mat2:
         return None
 
     if len(shape_mat1) == 2:
