@@ -10,9 +10,9 @@ def cat_matrices2D(mat1, mat2, axis=0):
     """
     match = 0
     # create a copy of mat1
-    cp_mat1 = [[columns for columns in rows] for rows in mat1]
+    cp_mat1 = mat1.copy()
     # create a copy of mat2
-    cp_mat2 = [[columns for columns in rows] for rows in mat2]
+    cp_mat2 = mat2.copy()
 
     # concatenate rows
     if axis == 0:
