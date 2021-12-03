@@ -14,8 +14,6 @@ def cat_matrices2D(mat1, mat2, axis=0):
     # create a copy of mat2
     cp_mat2 = [[columns for columns in rows] for rows in mat2]
 
-
-
     # concatenate rows
     if axis == 0:
         # check if we can concatenate the two matrices
