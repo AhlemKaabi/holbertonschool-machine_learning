@@ -8,5 +8,7 @@ def poly_derivative(poly):
     """
         Calculates the derivative of a polynomial.
     """
+    if poly == []:
+        return None
     deg = len(poly)
     return [i * poly[i] for i in range(deg) if i - 1 >= 0]
