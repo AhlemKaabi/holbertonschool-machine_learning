@@ -10,7 +10,7 @@ def summation_i_squared(n):
         that calculates Sum Sigma
     """
 
-    if n >= 0:
-        res = (n * (n + 1) * ((2 * n) + 1))/6
-        return res
-    return None
+    # if n >= 0:
+    res = (n * (n + 1) * ((2 * n) + 1))/6
+    return res
+    # return None
