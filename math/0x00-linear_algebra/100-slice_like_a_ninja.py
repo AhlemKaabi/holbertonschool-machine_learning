@@ -3,7 +3,8 @@
     Silce a numpy array with Dictionary of axes as keys
     and slices as values
 """
-import numpy as np
+
+
 def np_slice(matrix, axes={}):
     """
         matrix: is the matrix to slice
@@ -23,5 +24,3 @@ def np_slice(matrix, axes={}):
             mat_slices.append(slice(None))
 
     return matrix[tuple(mat_slices)]
-
-
