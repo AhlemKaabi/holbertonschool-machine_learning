@@ -12,13 +12,14 @@
 * How to plot multiple sets of data at the same time
 
 **Tasks output**
-![](/img/line.png)
-![](/img/scatter.png)
-![](/img/change_scale_log.png)
-![](/img/frequency.png)
-![](/img/two_graphs.png)
-![](/img/all_in_one.png)
-![](/img/bars.png)
+
+![](./img/line.png)
+![](./img/scatter.png)
+![](./img/change_scale_log.png)
+![](./img/frequency.png)
+![](./img/two_graphs.png)
+![](./img/all_in_one.png)
+![](./img/bars.png)
 
 
 
