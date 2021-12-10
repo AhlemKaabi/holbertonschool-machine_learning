@@ -10,7 +10,7 @@ def poly_derivative(poly):
     """
     if poly == []:
         return [0]
-    if poly != list:
+    if type(poly) != list:
         return None
     deg = len(poly)
     return [i * poly[i] for i in range(deg) if i - 1 >= 0]
