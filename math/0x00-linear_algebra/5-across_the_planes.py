@@ -10,6 +10,8 @@ def matrix_shape(matrix):
     """
     if not type(matrix) == list:
         return []
+    if matrix == []:
+        return [0]
     return [len(matrix)] + matrix_shape(matrix[0])
 
 
@@ -29,7 +31,9 @@ def add_matrices2D(mat1, mat2):
     if len(shape_mat1) == 2:
         sum = [[0] * shape_mat1[1] for i in range(shape_mat1[0])]
 
+    print(shape_mat1)
     for i_rows in range(shape_mat1[0]):
         for i_col in range(shape_mat1[1]):
             sum[i_rows][i_col] = mat1[i_rows][i_col] + mat2[i_rows][i_col]
+
     return sum
