@@ -8,10 +8,8 @@ def poly_derivative(poly):
     """
         Calculates the derivative of a polynomial.
     """
-    if type(poly) != list:
+    if poly == [] or type(poly) == int or type(poly) != list:
         return None
-    if poly == []:
-        return [0]
     deg = len(poly)
     if deg == 1:
         return [0]
