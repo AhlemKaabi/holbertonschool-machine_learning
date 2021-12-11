@@ -13,7 +13,8 @@ def poly_integral(poly, C=0):
     if poly == [] or C == None or type(poly) == int:
         return None
 
-    if poly is [0]:
+    if poly == [0]:
+        print("yes")
         return [C]
 
     integral = [C]
