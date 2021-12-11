@@ -10,11 +10,9 @@ def poly_integral(poly, C=0):
     """
         Calculates the integral of a polynomial.
     """
-    if poly == [] or C == None or type(poly) == int:
+    if C is None or poly == [] or type(poly) == int:
         return None
-
     if poly == [0]:
-        print("yes")
         return [C]
 
     integral = [C]
