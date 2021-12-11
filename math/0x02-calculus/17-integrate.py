@@ -10,9 +10,18 @@ def poly_integral(poly, C=0):
     """
         Calculates the integral of a polynomial.
     """
-    integral = [0]
-    if poly == []:
+    if poly == [] or C == None or type(poly) == int:
         return None
+
+    if poly is [0]:
+        return [C]
+
+    integral = [C]
+# https://python-reference.readthedocs.io/en/latest/docs/float/index.html
     for count, value in enumerate(poly):
-        integral.append(value * (1 / (count + 1)))
+        res = value / (count + 1)
+        if res.is_integer():
+            integral.append(int(res))
+        else:
+            integral.append(res)
     return integral
