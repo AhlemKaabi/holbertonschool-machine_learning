@@ -5,6 +5,7 @@
 """
 import numpy as np
 
+
 class Neuron:
     """
         class Neuron.
@@ -13,7 +14,8 @@ class Neuron:
         """
             Args:
                 nx : is the number of input features to the neuron
-                W : The weights vector for the neuron (random normal distribution).
+                W : The weights vector for the neuron (random normal
+                distribution).
                 b : The bias for the neuron.
                 A : The activated output of the neuron (prediction)
         """
