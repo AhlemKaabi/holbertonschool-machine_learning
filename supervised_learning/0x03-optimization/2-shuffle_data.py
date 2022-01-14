@@ -7,7 +7,6 @@
 import numpy as np
 
 
-
 def shuffle_data(X, Y):
     """
     shuffles the data points in two matrices the same way
@@ -25,7 +24,8 @@ def shuffle_data(X, Y):
     """
     # https://numpy.org/doc/stable/user/basics.indexing.html#integer-array-indexing
 
-    # specify the length of the randomized sequence to be equal to the number of elements
+    # specify the length of the randomized sequence to
+    # be equal to the number of elements
 
     length = np.random.permutation(len(X))
     # !! type(length) = <class 'numpy.ndarray'> !!
