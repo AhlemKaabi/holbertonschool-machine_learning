@@ -19,12 +19,6 @@ def calculate_accuracy(y, y_pred):
     """
     # https://jaredwinick.github.io/what_is_tf_keras/
 
-    #  accuracy = correct_predictions / all_predictions ==> mean
-#---------
-    # m = tf.keras.metrics.Accuracy()
-    # m.update_state(y_true=y, y_pred=y_pred)
-    # accuracy = m.result()
-#---------
     # For each prediction, if the index with the largest value
     # matches the target value, then the prediction was correct.
     max_correct_predictions_index = tf.math.argmax(y, axis=1)
