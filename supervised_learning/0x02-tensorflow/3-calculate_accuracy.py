@@ -17,22 +17,23 @@ def calculate_accuracy(y, y_pred):
     Returns:
         a tensor containing the decimal accuracy of the prediction
     """
-    # For each prediction, if the index with the largest value
-    # matches the target value, then the prediction was correct.
     # https://jaredwinick.github.io/what_is_tf_keras/
 
     #  accuracy = correct_predictions / all_predictions ==> mean
-
-# ---------
+#---------
     # m = tf.keras.metrics.Accuracy()
     # m.update_state(y_true=y, y_pred=y_pred)
     # accuracy = m.result()
-# ---------
-
-    compare_data_bool = tf.math.equal(y, y_pred)
+#---------
+    # For each prediction, if the index with the largest value
+    # matches the target value, then the prediction was correct.
+    max_correct_predictions_index = tf.math.argmax(y, axis=1)
+    max_output_predictions_index = tf.math.argmax(y_pred, axis=1)
+    compare_data = tf.math.equal(max_output_predictions_index,
+                                 max_correct_predictions_index)
 
     # Casts compare_data to to be float.
-    compare_data_float = tf.dtypes.cast(compare_data_bool, "float")
+    compare_data_float = tf.dtypes.cast(compare_data, "float")
     # extract accuracy
     accuracy = tf.math.reduce_mean(compare_data_float)
 
