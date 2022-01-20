@@ -34,8 +34,6 @@ def l2_reg_gradient_descent(Y, weights, cache, alpha, lambtha, L):
         @lambtha: the L2 regularization parameter
           @L: the number of layers of the network
 
-    Returns:
-        cost of the network accounting for L2 regularization
     """
     # Number of trainings
     m = Y.shape[1]
