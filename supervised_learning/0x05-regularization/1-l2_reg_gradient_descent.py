@@ -17,8 +17,8 @@ def tanh(Z):
         A (array): post activation output.
     """
     A = np.tanh(Z)
-
     return A
+
 
 def l2_reg_gradient_descent(Y, weights, cache, alpha, lambtha, L):
     """
@@ -42,17 +42,21 @@ def l2_reg_gradient_descent(Y, weights, cache, alpha, lambtha, L):
     # Initialization for backpropagation algorithm
     dZ = cache['A' + str(L)] - Y
 
-    for i in range(L , 1, -1):
-        # dW is the Derivative of the cost function w.r.t W of the current layer
-        dW = (np.matmul(dZ, cache['A'+ str(i - 1)].T)) / m
-        # db is the Derivative of the cost function w.r.t b of the current layer
+    for i in range(L, 1, -1):
+        # dW is the Derivative of the cost function w.r.t W
+        # of the current layer
+        dW = (np.matmul(dZ, cache['A' + str(i - 1)].T)) / m
+        # db is the Derivative of the cost function w.r.t b
+        # of the current layer
         db = (np.sum(dZ, axis=0, keepdims=True)) / m
-
-        # dA is the Derivative of the cost function w.r.t A (cache) of the current layer
-        dA = 1 - np.square(cache['A'+ str(i - 1)])
-        # dZ is the Derivative of the cost function w.r.t Z of the current layer
+        # dA is the Derivative of the cost function w.r.t A
+        # (cache) of the current layer
+        dA = 1 - np.square(cache['A' + str(i - 1)])
+        # dZ is the Derivative of the cost function w.r.t Z
+        # of the current layer
         dZ = np.multiply(np.matmul(weights['W' + str(i)].T, dZ), dA)
-        # Updating weight matrix and the bias vector for each layer
-        weights['W' + str(i)] = (1 - ((alpha * lambtha)/ m)) * weights['W' + str(i)] - alpha * dW
+        # Updating weight matrix and the bias vector for
+        # each layer
+        reg_term = 1 - ((alpha * lambtha) / m)
+        weights['W' + str(i)] = reg_term * weights['W' + str(i)] - alpha * dW
         weights['b' + str(i)] = weights['b' + str(i)] - alpha * db
-
