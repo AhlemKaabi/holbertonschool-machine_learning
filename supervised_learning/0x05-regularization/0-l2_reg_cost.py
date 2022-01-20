@@ -27,8 +27,7 @@ def l2_reg_cost(cost, lambtha, weights, L, m):
     Forbenius_norm = 0
     for weight in weights.values():
         Forbenius_norm += np.linalg.norm(weight) ** 2
-    L2_reg_param = (lambtha / (2 * m) )* Forbenius_norm
+    L2_reg_param = (lambtha / (2 * m)) * Forbenius_norm
 
     L2_reg_cost = cost + L2_reg_param
     return L2_reg_cost
-
