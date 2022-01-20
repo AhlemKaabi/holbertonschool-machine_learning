@@ -1,22 +1,37 @@
 #!/usr/bin/env python3
 """
-	L2 Regularization Cost
+    Forward Propagation with Dropout.
 """
+import numpy as np
 
 
-def l2_reg_cost(cost, lambtha, weights, L, m):
+def dropout_forward_prop(X, weights, L, keep_prob):
     """
-	Method:
-		calculates the cost of a neural network with
-  		L2 regularization.
+    Method:
+         conducts forward propagation using Dropout.
 
     Parameters:
-		@cost:
-		@lambtha:
-		@weights:
-		@L:
-		@m:
+        @X: containing the input data for the network.
+        @weights: is a dictionary of the weights and biases of
+              the neural network
+          @L: the number of layers in the network.
+          @keep_prob: the probability that a node will be kept.
 
-	Returns:
-		cost of the network accounting for L2 regularization
+    Returns:
+        a dictionary containing the outputs of each layer and
+        the dropout mask used on each layer
     """
+    # https://tinyurl.com/56eyn35t
+    output = {}
+    A = X
+    output['A0'] = X
+    for i in range(1, L):
+        Z = np.matmul(weights['W' + str(i)], A) + weights['b' + str(i)]
+        A = np.tanh(Z)
+        d = (np.random.rand(A.shape[0], A.shape[1]) < keep_prob).astype(int)
+        A = np.multiply(A, d)
+        A /= keep_prob
+        output['A' + str(i)] = A
+        output['D' + str(i)] = d
+    return output
+
