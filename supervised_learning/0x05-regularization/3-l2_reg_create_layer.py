@@ -23,7 +23,9 @@ def l2_reg_create_layer(prev, n, activation, lambtha):
     init_weights = tf.keras.initializers.VarianceScaling(mode='fan_avg')
     layer = tf.layers.Dense(n, activation=activation,
                             kernel_initializer= init_weights,
+                            activity_regularizer=tf.keras.regularizers.l2(lambtha),
                             name="layer")
-    regularizer = tf.keras.regularizers.L2(lambtha)
-    output = regularizer(layer(prev))
+    # regularizer = tf.keras.regularizers.L2(lambtha)
+    # output = regularizer(layer(prev))
+    output = layer(prev)
     return output
