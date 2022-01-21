@@ -25,8 +25,14 @@ def l2_reg_cost(cost, lambtha, weights, L, m):
     # cost = loss + L2 Regularization parameter
 
     Forbenius_norm = 0
-    for weight in weights.values():
-        Forbenius_norm += np.linalg.norm(weight) ** 2
+    # when only a dictionary of weights
+    # for weight in weights.values():
+    #     Forbenius_norm += np.linalg.norm(weight) ** 2
+
+    for weight in weights.keys():
+        if 'W' in weight:
+            Forbenius_norm += np.linalg.norm(weights[weight]) ** 2
+
     L2_reg_param = (lambtha / (2 * m)) * Forbenius_norm
 
     L2_reg_cost = cost + L2_reg_param
