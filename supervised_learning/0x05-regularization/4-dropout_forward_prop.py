@@ -9,13 +9,14 @@ def dropout_matrices(weights, m, keep_prob, L):
     np.random.seed(1)
     D = {}
 
-    for l in range(1, L + 1):
+    for i in range(1, L + 1):
         # initialize the random values for the dropout matrix
-        D[str(l)] = np.random.rand(weights['W' + str(l)].shape[0], m)
+        D[str(i)] = np.random.rand(weights['W' + str(i)].shape[0], m)
         # Convert it to 0/1 to shut down neurons corresponding to each element
-        D[str(l)] = (D[str(l)] < keep_prob).astype(int)
-        assert(D[str(l)].shape == (weights['W' + str(l)].shape[0], m))
+        D[str(i)] = (D[str(i)] < keep_prob).astype(int)
+        assert(D[str(i)].shape == (weights['W' + str(i)].shape[0], m))
     return D
+
 
 def dropout_forward_prop(X, weights, L, keep_prob):
     """
@@ -52,4 +53,3 @@ def dropout_forward_prop(X, weights, L, keep_prob):
         output['A' + str(i)] = A
         output['D' + str(i)] = D[str(i)]
     return output
-
