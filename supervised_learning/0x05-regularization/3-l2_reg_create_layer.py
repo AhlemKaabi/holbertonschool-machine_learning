@@ -25,19 +25,19 @@ def l2_reg_create_layer(prev, n, activation, lambtha):
     # kernel_regularizer: Regularizer to apply a penalty on the layer's kernel
     #   -> Tries to reduce the weights W (excluding bias)
     # bias_regularizer: Regularizer to apply a penalty on the layer's bias
-    # activity_regularizer: Regularizer to apply a penalty on the layer's output ->
-    #   Tries to reduce the layer's output y, thus will reduce the weights and adjust
-    #   bias so Wx+b is smallest.
+    # activity_regularizer: Regularizer to apply a penalty on the layer's
+    #   output -> Tries to reduce the layer's output y, thus will reduce the
+    #   weights and adjust bias so Wx+b is smallest.
 
     # https://stackoverflow.com/questions/51683495/what-does-it-mean-to-set-kernel-regularizer-to-be-l2-regularizer-in-tf-layers-co
 
-
     init_weights = tf.keras.initializers.VarianceScaling(mode='fan_avg')
+
+    regularizer = tf.keras.regularizers.L2(lambtha)
     layer = tf.layers.Dense(n, activation=activation,
-                            kernel_initializer= init_weights,
-                            kernel_regularizer=tf.keras.regularizers.L2(lambtha),
+                            kernel_initializer=init_weights,
+                            kernel_regularizer=regularizer,
                             name="layer")
-    # regularizer = tf.keras.regularizers.L2(lambtha)
     # output = regularizer(layer(prev))
     output = layer(prev)
     return output
