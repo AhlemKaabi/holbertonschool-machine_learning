@@ -6,6 +6,20 @@ import numpy as np
 
 
 def dropout_matrices(weights, m, keep_prob, L):
+    """
+    Method:
+        create dropout matrices
+
+    Parameters:
+        @weights: is a dictionary of the weights and biases of
+              the neural network
+        @m: number of examples
+        @L: the number of layers in the network.
+        @keep_prob: the probability that a node will be kept.
+
+    Returns:
+        dictionary containing the dropouts
+    """
     np.random.seed(1)
     D = {}
 
@@ -27,8 +41,8 @@ def dropout_forward_prop(X, weights, L, keep_prob):
         @X: containing the input data for the network.
         @weights: is a dictionary of the weights and biases of
               the neural network
-          @L: the number of layers in the network.
-          @keep_prob: the probability that a node will be kept.
+        @L: the number of layers in the network.
+        @keep_prob: the probability that a node will be kept.
 
     Returns:
         a dictionary containing the outputs of each layer and
