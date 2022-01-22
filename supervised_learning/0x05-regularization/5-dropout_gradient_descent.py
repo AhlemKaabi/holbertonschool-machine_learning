@@ -5,32 +5,6 @@
 import numpy as np
 
 
-def dropout_matrices(weights, m, keep_prob, L):
-    """
-    Method:
-        create dropout matrices
-
-    Parameters:
-        @weights: is a dictionary of the weights and biases of
-              the neural network
-        @m: number of examples
-        @L: the number of layers in the network.
-        @keep_prob: the probability that a node will be kept.
-
-    Returns:
-        dictionary containing the dropouts
-    """
-    np.random.seed(1)
-    D = {}
-
-    for i in range(1, L + 1):
-        # initialize the random values for the dropout matrix
-        D[str(i)] = np.random.rand(weights['W' + str(i)].shape[0], m)
-        # Convert it to 0/1 to shut down neurons corresponding to each element
-        D[str(i)] = (D[str(i)] < keep_prob).astype(int)
-        assert(D[str(i)].shape == (weights['W' + str(i)].shape[0], m))
-    return D
-
 def dropout_gradient_descent(Y, weights, cache, alpha, keep_prob, L):
     """
     Method:
@@ -52,22 +26,51 @@ def dropout_gradient_descent(Y, weights, cache, alpha, keep_prob, L):
     # get number of examples
     m = Y.shape[1]
 
-    D = dropout_matrices(weights, m, keep_prob, L)
 
-    A = cache['A' + str(L)]
-    # dA for output layer
-    dA = 1 - np.square(cache['A' + str(L - 1)])
-    dA = np.matmul(dA, D[str(L)].T)
-    dA /= keep_prob
+    # the last Layer uses the softmax activation function
+    softmax = cache['A' + str(L)]
+    dZ = softmax - Y
+    # print(" init dZ shape", dZ.shape)
+    # print(cache['D2'].shape)
+    # print(cache['D1'].shape)
+
+    for l in range(L, 0, -1):
+        # print("this is layer", l)
+
+        W = weights['W' + str(l)]
+        # print("W shape", W.shape)
+
+        b = weights['b' + str(l)]
+
+        tanh_A = cache['A' + str(l - 1)]
+        # print("tanh_A shape", tanh_A.shape)
 
 
-    cache["A" + str(L)] = dA
-
-    for l in range(L - 1, 0, -1):
-        current_activation = cache['A' + str(l)]
-
-        cache["dA" + str(l - 1)] = np.matmul(current_activation, D[str(l)].T)
-
-        cache["dA" + str(l - 1)] /= keep_prob
+        dW = (np.matmul(dZ, tanh_A.T)) / m
+        # print("dW shape", dW.shape)
 
 
+        db = (np.sum(dZ, axis=0, keepdims=True)) / m
+        # if l == L:
+        #
+        #     # dA = 1 - np.square(cache['A' + str(l)])
+        #     print("dA shape", dA.shape)
+
+        if l > L: # l > 3
+            # A3 . D2 / A2 . D1
+            dA = 1 - np.square(cache['A' + str(l + 1)]) # A3
+            current_D = cache['D' + str(l)]
+            # print("current_D shape", current_D.shape)
+
+            dA = (dA * current_D) / keep_prob
+            # print(" l != L + dropout dA shape", dA.shape)
+        else:
+            dA = 1 - np.square(tanh_A)
+
+        # dA = (dA * current_D) / keep_prob
+        dZ = np.matmul(W.T, dZ) * dA
+        # print("dZ shape", dZ.shape)
+
+
+        weights['W' + str(l)] = W - (alpha * dW)
+        weights['b' + str(l)] = b - (alpha * db)
