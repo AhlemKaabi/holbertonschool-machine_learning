@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-    L2 Regularization Cost
+    Create a Layer with Dropout 
 """
 import tensorflow.compat.v1 as tf
 
