@@ -29,19 +29,19 @@ def build_model(nx, layers, activations, lambtha, keep_prob):
          the keras model
     """
 
-    act_regularizer = K.regularizers.l2(lambtha)
+    reg = K.regularizers.l2(lambtha)
 
     inputs = K.Input(shape=(nx,))
     hidden_layer = inputs
     for i in range(0, len(layers)):
         if i == len(layers) - 1:
             outputs = K.layers.Dense(layers[i],
-                                    activation=activations[i],
-                                    activity_regularizer=act_regularizer)(hidden_layer)
+                                     activation=activations[i],
+                                     activity_regularizer=reg)(hidden_layer)
 
-        hidden_layer=K.layers.Dense(layers[i],
-                                    activation=activations[i],
-                                    activity_regularizer=act_regularizer)(hidden_layer)
+        hidden_layer = K.layers.Dense(layers[i],
+                                      activation=activations[i],
+                                      activity_regularizer=reg)(hidden_layer)
         hidden_layer = K.layers.Dropout(keep_prob)(hidden_layer)
 
     model = K.Model(inputs=inputs, outputs=outputs)
