@@ -2,6 +2,7 @@
 """
     Gradient Descent with Dropout
 """
+from re import I
 import numpy as np
 
 
@@ -26,7 +27,6 @@ def dropout_gradient_descent(Y, weights, cache, alpha, keep_prob, L):
     # get number of examples
     m = Y.shape[1]
 
-
     # the last Layer uses the softmax activation function
     softmax = cache['A' + str(L)]
     dZ = softmax - Y
@@ -34,21 +34,18 @@ def dropout_gradient_descent(Y, weights, cache, alpha, keep_prob, L):
     # print(cache['D2'].shape)
     # print(cache['D1'].shape)
 
-    for l in range(L, 0, -1):
+    for i in range(L, 0, -1):
         # print("this is layer", l)
 
-        W = weights['W' + str(l)]
+        W = weights['W' + str(i)]
         # print("W shape", W.shape)
 
-        b = weights['b' + str(l)]
+        b = weights['b' + str(i)]
 
-        tanh_A = cache['A' + str(l - 1)]
+        tanh_A = cache['A' + str(i - 1)]
         # print("tanh_A shape", tanh_A.shape)
-
-
         dW = (np.matmul(dZ, tanh_A.T)) / m
         # print("dW shape", dW.shape)
-
 
         db = (np.sum(dZ, axis=0, keepdims=True)) / m
         # if l == L:
@@ -56,10 +53,10 @@ def dropout_gradient_descent(Y, weights, cache, alpha, keep_prob, L):
         #     # dA = 1 - np.square(cache['A' + str(l)])
         #     print("dA shape", dA.shape)
 
-        if l > L: # l > 3
+        if i > L:
             # A3 . D2 / A2 . D1
-            dA = 1 - np.square(cache['A' + str(l + 1)]) # A3
-            current_D = cache['D' + str(l)]
+            dA = 1 - np.square(cache['A' + str(i + 1)])
+            current_D = cache['D' + str(i)]
             # print("current_D shape", current_D.shape)
 
             dA = (dA * current_D) / keep_prob
@@ -71,6 +68,5 @@ def dropout_gradient_descent(Y, weights, cache, alpha, keep_prob, L):
         dZ = np.matmul(W.T, dZ) * dA
         # print("dZ shape", dZ.shape)
 
-
-        weights['W' + str(l)] = W - (alpha * dW)
-        weights['b' + str(l)] = b - (alpha * db)
+        weights['W' + str(i)] = W - (alpha * dW)
+        weights['b' + str(i)] = b - (alpha * db)
