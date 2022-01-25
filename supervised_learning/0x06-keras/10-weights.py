@@ -36,4 +36,5 @@ def load_weights(network, filename):
          None
 
     """
-    return network.load_weights(filename)
+    network.load_weights(filename)
+    return None
