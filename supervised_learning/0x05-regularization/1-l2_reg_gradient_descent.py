@@ -37,6 +37,7 @@ def l2_reg_gradient_descent(Y, weights, cache, alpha, lambtha, L):
     """
     # Number of trainings
     m = Y.shape[1]
+    # print(m)
     # Initialization for backpropagation algorithm
     dZ = cache['A' + str(L)] - Y
 
@@ -46,10 +47,12 @@ def l2_reg_gradient_descent(Y, weights, cache, alpha, lambtha, L):
         dW = (np.matmul(dZ, cache['A' + str(i - 1)].T)) / m
         # db is the Derivative of the cost function w.r.t b
         # of the current layer
-        db = (np.sum(dZ, axis=0, keepdims=True)) / m
+        db = (np.sum(dZ, axis=1, keepdims=True)) / m
         # dA is the Derivative of the cost function w.r.t A
         # (cache) of the current layer
         dA = 1 - np.square(cache['A' + str(i - 1)])
+        # print(cache['A' + str(i - 1)].shape)
+        # print(dA.shape)
         # dZ is the Derivative of the cost function w.r.t Z
         # of the current layer
         dZ = np.multiply(np.matmul(weights['W' + str(i)].T, dZ), dA)
