@@ -40,7 +40,7 @@ def l2_reg_gradient_descent(Y, weights, cache, alpha, lambtha, L):
     # Initialization for backpropagation algorithm
     dZ = cache['A' + str(L)] - Y
 
-    for i in range(L, 1, -1):
+    for i in range(L, 0, -1):
         # dW is the Derivative of the cost function w.r.t W
         # of the current layer
         dW = (np.matmul(dZ, cache['A' + str(i - 1)].T)) / m
