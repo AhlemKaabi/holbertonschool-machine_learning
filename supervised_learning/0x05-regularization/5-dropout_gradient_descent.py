@@ -47,7 +47,7 @@ def dropout_gradient_descent(Y, weights, cache, alpha, keep_prob, L):
         dW = (np.matmul(dZ, tanh_A.T)) / m
         # print("dW shape", dW.shape)
 
-        db = (np.sum(dZ, axis=0, keepdims=True)) / m
+        db = (np.sum(dZ, axis=1, keepdims=True)) / m
         # if l == L:
         #
         #     # dA = 1 - np.square(cache['A' + str(l)])
