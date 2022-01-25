@@ -33,7 +33,6 @@ def load_weights(network, filename):
         should be loaded from
 
     Returns:
-        the loaded model.
-
+        None
     """
-    return network.load_weights(filename)
+    network.load_weights(filename)
