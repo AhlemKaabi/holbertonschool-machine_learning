@@ -27,14 +27,13 @@ def load_weights(network, filename):
     Method:
         loads a model's weights.
 
-     Parameters:
+    Parameters:
         @network: the model to which the weights should be loaded
         @filename is the path of the file that the weights
         should be loaded from
 
     Returns:
-         None
+        the loaded model.
 
     """
-    network.load_weights(filename)
-    return None
+    return network.load_weights(filename)
