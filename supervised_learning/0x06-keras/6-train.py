@@ -42,7 +42,7 @@ def train_model(network, data, labels, batch_size, epochs,
     Returns:
          the one-hot matrix
     """
-    callbacks=None
+    callbacks = None
     if validation_data and early_stopping:
         callbacks = [K.callbacks.EarlyStopping(patience=patience)]
 
