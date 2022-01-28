@@ -2,6 +2,9 @@
 """
     Keras - Test
 """
+import tensorflow.keras as K
+
+
 def test_model(network, data, labels, verbose=True):
     """
     Method:
