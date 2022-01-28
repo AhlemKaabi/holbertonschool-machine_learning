@@ -23,4 +23,4 @@ def test_model(network, data, labels, verbose=True):
     """
     # evaluate() :Returns the loss value & metrics values
     # for the model in test mode.
-    return network.evaluate(x=data, y=labels, verbose=1)
+    return network.evaluate(x=data, y=labels, verbose=verbose)
