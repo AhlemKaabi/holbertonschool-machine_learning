@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """
-	Keras - Predict
+    Keras - Predict
 """
+import tensorflow.keras as K
+
+
 def predict(network, data, verbose=False):
     """
     Method:
