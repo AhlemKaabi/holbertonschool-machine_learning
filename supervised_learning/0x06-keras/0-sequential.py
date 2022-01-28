@@ -14,19 +14,19 @@ def build_model(nx, layers, activations, lambtha, keep_prob):
     Parameters:
         @nx: is the number of input features to the network
 
-          @layers: is a list containing the number of nodes in
-              each layer of the network
+        @layers: is a list containing the number of nodes in
+            each layer of the network
 
-          @activations: is a list containing the activation
-              functions used for each layer of the network
+        @activations: is a list containing the activation
+            functions used for each layer of the network
 
-          @lambtha: is the L2 regularization parameter
+        @lambtha: is the L2 regularization parameter
 
-          @keep_prob: is the probability that a node will be
-              kept for dropout
+        @keep_prob: is the probability that a node will be
+            kept for dropout
 
     Returns:
-         the keras model
+        the keras model
     """
 
     model = K.Sequential()
@@ -36,6 +36,6 @@ def build_model(nx, layers, activations, lambtha, keep_prob):
                                  activation=activations[i],
                                  activity_regularizer=act_regularizer))
         if i < len(layers) - 1:
-            model.add(K.layers.Dropout(keep_prob))
+            model.add(K.layers.Dropout(1 - keep_prob))
 
     return model
