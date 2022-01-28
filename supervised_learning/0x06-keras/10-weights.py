@@ -18,7 +18,8 @@ def save_weights(network, filename, save_format='h5'):
 
     Returns: None
     """
-    network.save_weights(filename)
+    # https://keras.io/api/models/model_saving_apis/
+    network.save_weights(filename, save_format=save_format)
     return None
 
 
@@ -35,4 +36,4 @@ def load_weights(network, filename):
     Returns:
         None
     """
-    return network.load_weights(filename)
+    network.load_weights(filename)
