@@ -61,8 +61,6 @@ def train_model(network, data, labels, batch_size,
         # https://neptune.ai/blog/how-to-choose-a-learning-rate-scheduler#implementation
         # decay = alpha / epochs ==> decay_rate
         return alpha / (1 + decay_rate * epoch)
-        # return alpha / (1 + alpha)
-
 
     callbacks = []
 
