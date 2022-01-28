@@ -83,11 +83,13 @@ def train_model(network, data, labels, batch_size, epochs,
         # https://towardsdatascience.com/keras-callbacks-and-how-to-save-your-model-from-overtraining-244fc1de8608
         # a model is considered the best if its validation loss
         # is the lowest that the model has obtained
+        # https://keras.io/api/callbacks/model_checkpoint/
+        # default parameters
         checkpoint = K.callbacks.ModelCheckpoint(filepath=filepath,
                                                  monitor='val_loss',
-                                                 verbose=1,
+                                                 verbose=0,
                                                  save_best_only=True,
-                                                 mode='min')
+                                                 mode='auto')
         callbacks.append(checkpoint)
 
     History = network.fit(x=data, y=labels,
