@@ -36,8 +36,6 @@ def save_config(network, filename):
     json_file.write(model_json)
 
 
-
-
 def load_config(filename):
     """
     Method:
