@@ -37,10 +37,8 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
     if padding == 'valid':
         ph = pw = 0
     elif padding == "same":
-        # ph = int(np.ceil((input_h - 1) * sh + kernel_h - input_h) / 2)
-        ph = (((input_h - 1) * sh + kernel_h - input_h) // 2) + 1
-        # pw = int(np.ceil((input_w - 1) * sw + kernel_w - input_w) / 2)
-        pw = (((input_w - 1) * sw + kernel_w - input_w) // 2) + 1
+        ph = int(np.ceil((input_h - 1) * sh + kernel_h - input_h) / 2)
+        pw = int(np.ceil((input_w - 1) * sw + kernel_w - input_w) / 2)
     else:
         ph = padding[0]
         pw = padding[1]
@@ -60,7 +58,7 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
     for i in range(output_height):
         for j in range(output_width):
             x = i * sh
-            y = j * sh
+            y = j * sw
             # element-wise multiplication of the kernel and the image
             img_slice = image_padded[:, x:x+kernel_h, y:y+kernel_w]
             output[:, i, j] = np.tensordot(img_slice, kernel)
