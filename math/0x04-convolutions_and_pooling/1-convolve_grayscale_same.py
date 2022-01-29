@@ -57,8 +57,8 @@ def convolve_grayscale_same(images, kernel):
 
     # Add zero padding to the input image
     image_padded = np.zeros((m,
-                             output_height + pad_along_height,
-                             output_width + pad_along_width))
+                             input_h + pad_along_height,
+                             input_w + pad_along_width))
     image_padded[:, pad_top:-pad_bottom, pad_left:-pad_right] = images
 
     # Loop over every pixel of the output
