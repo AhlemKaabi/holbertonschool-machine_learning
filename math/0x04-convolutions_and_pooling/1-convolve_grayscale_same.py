@@ -37,8 +37,8 @@ def convolve_grayscale_same(images, kernel):
     output_width = input_w
 
     # Calculate the number of zeros which are needed to add as padding
-    pad_along_height = int((kernel_h  + 1) / 2)
-    pad_along_width = int((kernel_w  + 1) / 2)
+    pad_along_height = int((kernel_h  - 1) / 2)
+    pad_along_width = int((kernel_w  - 1) / 2)
 
     # pad_along_height = max((output_height - 1) + kernel_h - input_h, 0)
     # pad_along_width = max((output_width - 1) + kernel_w - input_w, 0)
