@@ -36,35 +36,23 @@ def convolve_grayscale_same(images, kernel):
     output_height = input_h
     output_width = input_w
 
-    # Calculate the number of zeros which are needed to add as padding
-    pad_along_height = int((kernel_h  - 1) / 2)
-    pad_along_width = int((kernel_w  - 1) / 2)
-
-    # pad_along_height = max((output_height - 1) + kernel_h - input_h, 0)
-    # pad_along_width = max((output_width - 1) + kernel_w - input_w, 0)
-
-    pad_top = pad_along_height // 2
-    # amount of zero padding on the top
-    pad_bottom = pad_along_height - pad_top
-    # amount of zero padding on the bottom
-    pad_left = pad_along_width // 2
-    # amount of zero padding on the left
-    pad_right = pad_along_width - pad_left
-    # amount of zero padding on the right
+    # Calculate the number of zeros which
+    # are needed to add as padding (height & width)
+    ph = int(np.ceil((kernel_h - 1) / 2))
+    pw = int(np.ceil((kernel_w - 1) / 2))
 
     # Same convolution output
     output = np.zeros((m, output_height, output_width))
 
     # Add zero padding to the input image
-    image_padded = np.zeros((m,
-                             input_h + pad_along_height,
-                             input_w + pad_along_width))
-    image_padded[:, pad_top:-pad_bottom, pad_left:-pad_right] = images
+    image_padded = np.pad(images,
+                          pad_width=((0, 0), (ph, ph), (pw, pw)),
+                          mode='constant')
 
     # Loop over every pixel of the output
     for x in range(output_width):
         for y in range(output_height):
             # element-wise multiplication of the kernel and the image
-            img_matrix = image_padded[:, y:y+kernel_h, x:x+kernel_w]
-            output[:, y, x] = np.multiply(kernel, img_matrix).sum(axis=(1, 2))
+            img_slice = image_padded[:, y:y+kernel_h, x:x+kernel_w]
+            output[:, y, x] = np.tensordot(img_slice, kernel)
     return output
