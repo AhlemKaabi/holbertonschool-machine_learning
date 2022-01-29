@@ -43,6 +43,11 @@ def convolve_grayscale_valid(images, kernel):
     for x in range(output_width):
         for y in range(output_height):
             # element-wise multiplication of the kernel and the image
-            img_matrix = images[:, y:y+kernel_h, x:x+kernel_w]
-            output[:, y, x] = np.multiply(kernel, img_matrix).sum(axis=(1, 2))
+            img_slice = images[:, y:y+kernel_h, x:x+kernel_w]
+            # https://numpy.org/doc/stable/reference/generated/numpy.tensordot.html
+            # output[:, y, x] = np.multiply(kernel, img_slice).sum(axis=(1, 2))
+            # tensors order! np.tensordot(a, b, axes=N) axes=2 default
+            # the last N dimensions of a and the first
+            # N dimensions of b are summed over.
+            output[:, y, x] = np.tensordot(img_slice, kernel)
     return output
