@@ -30,21 +30,15 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
     Returns:
         a numpy.ndarray containing the convolved images.
     """
-    # only allowed to use two for loops;
-    # any other loops of any kind are not allowed
-    # input_width and input_height
     m, input_h, input_w = images.shape
-
-    # flip the kernal matrix
-    # kernel = np.transpose(kernel) (already!)
-    # kernel_width and kernel_height
     kernel_h, kernel_w = kernel.shape
-    sh, sw = stride[0], stride[1]
+    sh, sw = stride
+
     if padding == 'valid':
         ph = pw = 0
     elif padding == "same":
-        ph = int(np.ceil((input_h - 1) * sh + kernel_h - input_h / 2))
-        pw = int(np.ceil((input_w - 1) * sw + kernel_w - input_w / 2))
+        ph = int(np.ceil(((input_h - 1) * sh + kernel_h - input_h / 2) + 1))
+        pw = int(np.ceil(((input_w - 1) * sw + kernel_w - input_w / 2) + 1))
     else:
         ph = padding[0]
         pw = padding[1]
