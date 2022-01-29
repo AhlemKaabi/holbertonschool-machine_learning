@@ -37,8 +37,11 @@ def convolve_grayscale_same(images, kernel):
     output_width = input_w
 
     # Calculate the number of zeros which are needed to add as padding
-    pad_along_height = max((output_height - 1) + kernel_h - input_h, 0)
-    pad_along_width = max((output_width - 1) + kernel_w - input_w, 0)
+    pad_along_height = int((kernel_h  + 1) / 2)
+    pad_along_width = int((kernel_w  + 1) / 2)
+
+    # pad_along_height = max((output_height - 1) + kernel_h - input_h, 0)
+    # pad_along_width = max((output_width - 1) + kernel_w - input_w, 0)
 
     pad_top = pad_along_height // 2
     # amount of zero padding on the top
@@ -54,8 +57,8 @@ def convolve_grayscale_same(images, kernel):
 
     # Add zero padding to the input image
     image_padded = np.zeros((m,
-                             input_h + pad_along_height,
-                             input_w + pad_along_width))
+                             output_height + pad_along_height,
+                             output_width + pad_along_width))
     image_padded[:, pad_top:-pad_bottom, pad_left:-pad_right] = images
 
     # Loop over every pixel of the output
