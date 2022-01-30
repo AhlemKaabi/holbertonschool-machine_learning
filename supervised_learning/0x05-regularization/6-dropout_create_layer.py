@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-    Create a Layer with Dropout 
+    Create a Layer with Dropout
 """
 import tensorflow.compat.v1 as tf
 
@@ -22,15 +22,20 @@ def dropout_create_layer(prev, n, activation, keep_prob):
 
     """
     # https://www.tensorflow.org/api_docs/python/tf/keras/layers/Dropout
-    # class Dropout: Applies Dropout to the input.
-
+    # class Dropout: Applies Dropout to the input!(layer, weights..)
+    # kernel_regularizer: Regularizer to apply a penalty on the layer's kernel
+    #   -> Tries to reduce the weights W (excluding bias)
     init_weights = tf.keras.initializers.VarianceScaling(mode='fan_avg')
 
-    dropout = tf.keras.layers.Dropout(keep_prob)
+    dropout = tf.layers.Dropout(keep_prob)
+    # layer = tf.layers.Dense(n, activation=activation,
+    #                         kernel_initializer=init_weights,
+    #                         kernel_regularizer=dropout,
+    #                         name="layer")
     layer = tf.layers.Dense(n, activation=activation,
                             kernel_initializer=init_weights,
-                            kernel_regularizer=dropout,
                             name="layer")
-    # output = regularizer(layer(prev))
-    output = layer(prev)
+    # output = layer(prev)
+    # applying the dropout not only on the weights but on the whole layer
+    output = dropout(layer(prev))
     return output
