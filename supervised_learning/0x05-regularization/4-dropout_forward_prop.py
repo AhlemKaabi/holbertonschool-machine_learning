@@ -62,7 +62,7 @@ def dropout_forward_prop(X, weights, L, keep_prob):
         else:
             A = (np.exp(Z) - np.exp(-Z))/(np.exp(Z) + np.exp(-Z))
             A = np.multiply(A, D[str(i)])
-            A /= keep_prob
+            A /= 1- keep_prob
             output['D' + str(i)] = D[str(i)]
         output['A' + str(i)] = A
     return output
