@@ -27,7 +27,7 @@ def dropout_create_layer(prev, n, activation, keep_prob):
     #   -> Tries to reduce the weights W (excluding bias)
     init_weights = tf.keras.initializers.VarianceScaling(mode='fan_avg')
 
-    dropout = tf.layers.Dropout(keep_prob)
+    dropout = tf.layers.Dropout(1 - keep_prob)
     layer = tf.layers.Dense(n,
                             activation=activation,
                             kernel_initializer=init_weights,)
