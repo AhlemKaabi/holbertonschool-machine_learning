@@ -32,4 +32,5 @@ for i in range(l):
     weights['b' + str(i + 1)] = np.random.randn(sizes[i + 1])
 cost = np.abs(np.random.randn(1))
 lam = np.random.uniform(0.01)
+print(len(weights))
 print(l2_reg_cost(cost, lam, weights, l, m))

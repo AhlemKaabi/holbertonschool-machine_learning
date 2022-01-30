@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+from re import X
 import numpy as np
 l2_reg_gradient_descent = __import__('1-l2_reg_gradient_descent').l2_reg_gradient_descent
 
@@ -14,6 +15,7 @@ def one_hot(Y, classes):
 if __name__ == '__main__':
     lib= np.load('../data/MNIST.npz')
     X_train_3D = lib['X_train']
+    print(X_train_3D.shape)
     Y_train = lib['Y_train']
     X_train = X_train_3D.reshape((X_train_3D.shape[0], -1)).T
     Y_train_oh = one_hot(Y_train, 10)
@@ -22,6 +24,7 @@ if __name__ == '__main__':
 
     weights = {}
     weights['W1'] = np.random.randn(256, 784)
+    print(weights['W1'].shape)
     weights['b1'] = np.zeros((256, 1))
     weights['W2'] = np.random.randn(128, 256)
     weights['b2'] = np.zeros((128, 1))
@@ -37,4 +40,3 @@ if __name__ == '__main__':
     print(weights['W1'])
     l2_reg_gradient_descent(Y_train_oh, weights, cache, 0.1, 0.1, 3)
     print(weights['W1'])
-    
