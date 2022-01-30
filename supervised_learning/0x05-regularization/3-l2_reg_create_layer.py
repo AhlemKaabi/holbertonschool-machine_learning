@@ -31,8 +31,9 @@ def l2_reg_create_layer(prev, n, activation, lambtha):
 
     # https://stackoverflow.com/questions/51683495/what-does-it-mean-to-set-kernel-regularizer-to-be-l2-regularizer-in-tf-layers-co
 
-    init_weights = tf.keras.initializers.VarianceScaling(mode='fan_avg')
-
+    init_weights = tf.keras.initializers.VarianceScaling(scale=2.0,
+                                                         mode=("fan_avg"))
+    
     regularizer = tf.keras.regularizers.L2(lambtha)
     layer = tf.layers.Dense(n, activation=activation,
                             kernel_initializer=init_weights,
