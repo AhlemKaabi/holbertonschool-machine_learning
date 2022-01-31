@@ -64,6 +64,6 @@ def convolve(images, kernels, padding='same', stride=(1, 1)):
                 x = i * sh
                 y = j * sw
                 # element-wise multiplication of the kernel and the image
-                img_slice = image_padded[:, x:x+kernel_h, y:y+kernel_w]
+                img_slice = image_padded[:, x:x+kernel_h, y:y+kernel_w, :]
                 output[:, i, j, k] = np.tensordot(img_slice, kernel, axes=3)
     return output
