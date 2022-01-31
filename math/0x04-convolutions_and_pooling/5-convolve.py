@@ -48,7 +48,7 @@ def convolve(images, kernels, padding='same', stride=(1, 1)):
     output_height = int(((input_h + 2 * ph - kernel_h) / sh) + 1)
     output_width = int(((input_w + 2 * pw - kernel_w) / sw) + 1)
 
-    # Same convolution output
+    # convolution output
     output = np.zeros((m, output_height, output_width, ker_nb_c))
 
     # Add zero padding to the input image
