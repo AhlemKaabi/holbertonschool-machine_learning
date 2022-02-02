@@ -5,7 +5,7 @@
 import numpy as np
 
 
-def pool_backward(dA, A_prev, kernel_shape, stride=(1, 1), mode='max'):
+def pool_backward(dA, A_prev, kernel_shape, stride=(1, 1), mode='avg'):
     """
     Method:
         performs back propagation over a pooling layer of
@@ -60,13 +60,10 @@ def pool_backward(dA, A_prev, kernel_shape, stride=(1, 1), mode='max'):
 
                         mask = (a_prev_slice == np.max(a_prev_slice))
                         # 1 for the cell that contains the max 0 otherwise
-                        dA_prev[m, x:x+kh, y:y+kw, c] += mask * dA[m,h,w,c]
+                        dA_prev[m, x:x+kh, y:y+kw, c] += mask * dA[m, h, w, c]
 
                     if mode == 'avg':
-                        average_dA = dA[m,h,w,c]/h_new/w_new
+                        avg_dA = dA[m, h, w, c]/kh/kw
 
-                        dA_prev[m, x:x+kh, y:y+kw, c] += np.ones((h_new,w_new))*average_dA
-
-                        # dx[i, h*(sh):(h*(sh))+kh, w*(sw):(w*(sw))+kw, f] += (dA[i, h, w, f])/kh/kw
-
+                        dA_prev[m, x:x+kh, y:y+kw, c] += np.ones((kh, kh)) * avg_dA
     return dA_prev
