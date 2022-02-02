@@ -45,7 +45,8 @@ def lenet5(x, y):
     flat5 = tf.layers.Flatten()(pool4)
 
     # Fully connected layer with 120 nodes
-    FC6 = tf.layers.Dense(120, activation='relu', kernel_initializer=init)(flat5)
+    FC6 = tf.layers.Dense(120, activation='relu',
+                          kernel_initializer=init)(flat5)
 
     # Fully connected layer with 84 nodes
     FC7 = tf.layers.Dense(84, activation='relu', kernel_initializer=init)(FC6)
@@ -55,11 +56,11 @@ def lenet5(x, y):
 
     output = tf.nn.softmax(FC8)
 
-    loss =tf.losses.softmax_cross_entropy(onehot_labels=y, logits=output)
+    loss = tf.losses.softmax_cross_entropy(onehot_labels=y, logits=output)
 
     train = tf.train.AdamOptimizer().minimize(loss)
 
-    #accuracy
+    # accuracy
     max_correct_predictions_index = tf.math.argmax(y, axis=1)
     max_output_predictions_index = tf.math.argmax(output, axis=1)
     compare_data = tf.math.equal(max_output_predictions_index,
