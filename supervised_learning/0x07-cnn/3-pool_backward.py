@@ -5,7 +5,7 @@
 import numpy as np
 
 
-def pool_backward(dA, A_prev, kernel_shape, stride=(1, 1), mode='avg'):
+def pool_backward(dA, A_prev, kernel_shape, stride=(1, 1), mode='max'):
     """
     Method:
         performs back propagation over a pooling layer of
