@@ -32,8 +32,6 @@ def pool_forward(A_prev, kernel_shape, stride=(1, 1), mode='max'):
     Returns:
         the output of the pooling layer
     """
-
-
     m, h_prev, w_prev, c_prev = A_prev.shape
 
     kh, kw = kernel_shape
@@ -44,7 +42,6 @@ def pool_forward(A_prev, kernel_shape, stride=(1, 1), mode='max'):
     A_w = int(((w_prev - kw) / sw) + 1)
 
     A = np.zeros((m, A_h, A_w, c_prev))
-
 
     # Loop over every pixel of the output
     for i in range(A_h):
