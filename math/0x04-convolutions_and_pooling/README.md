@@ -6,11 +6,6 @@ The term **convolution** refers to both the result function and to the process o
 
 
 ![This is an image](./img.gif)
-
-### **Convolutional neural network**
-In deep learning, a convolutional neural network (CNN, or ConvNet) is a class of artificial neural network, most commonly applied to analyze visual imagery - [reference](https://en.wikipedia.org/wiki/Convolutional_neural_network).
-
-
 ### **Learning Objectives**
 
 
@@ -24,4 +19,4 @@ In deep learning, a convolutional neural network (CNN, or ConvNet) is a class of
 * How to perform a convolution over an image
 * How to perform max/average pooling over an image
 
-*Holberton School project - Machine learning Specialization*
+**Holberton School project - Machine learning Specialization**
