@@ -51,16 +51,15 @@ def conv_backward(dZ, A_prev, W, b, padding="same", stride=(1, 1)):
     sh, sw = stride
 
     if padding == "valid":
-        ph = int(0)
-        pw = int(0)
-
+        ph = 0
+        pw = 0
     if padding == "same":
         ph = int(np.ceil(((h_prev - 1) * sh + kh - h_prev) / 2))
         pw = int(np.ceil(((w_prev - 1) * sw + kw - w_prev) / 2))
 
     db = np.sum(dZ, axis=(0, 1, 2), keepdims=True)
 
-    A_prev_padded = np.pad(A_prev, [(0, 0), (ph, ph), (pw, pw), (0, 0)],
+    A_prev_padded = np.pad(A_prev, ((0, 0), (ph, ph), (pw, pw), (0, 0)),
                            mode='constant')
 
     # Initializing with the correct shapes
