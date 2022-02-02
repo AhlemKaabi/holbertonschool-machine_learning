@@ -47,7 +47,7 @@ def pool_backward(dA, A_prev, kernel_shape, stride=(1, 1), mode='avg'):
     kh, kw = kernel_shape
     sh, sw = stride
 
-    dA_prev =  np.zeros(A_prev.shape)
+    dA_prev = np.zeros(A_prev.shape)
 
     for m in range(m):
         for h in range(h_new):
