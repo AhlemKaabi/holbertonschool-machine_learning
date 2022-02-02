@@ -43,6 +43,9 @@ def pool_forward(A_prev, kernel_shape, stride=(1, 1), mode='max'):
 
     A = np.zeros((m, A_h, A_w, c_prev))
 
+    # why use the average:
+    # https://www.cuemath.com/data/difference-between-average-and-mean/
+
     # Loop over every pixel of the output
     for i in range(A_h):
         for j in range(A_w):

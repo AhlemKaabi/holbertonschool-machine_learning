@@ -56,7 +56,7 @@ def lenet5(x, y):
 
     output = tf.nn.softmax(FC8)
 
-    loss = tf.losses.softmax_cross_entropy(onehot_labels=y, logits=output)
+    loss = tf.losses.softmax_cross_entropy(onehot_labels=y, logits=FC8)
 
     train = tf.train.AdamOptimizer().minimize(loss)
 

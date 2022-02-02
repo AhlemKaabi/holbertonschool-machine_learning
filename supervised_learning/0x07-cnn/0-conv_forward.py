@@ -38,13 +38,15 @@ def conv_forward(A_prev, W, b,
     """
     m, h_prev, w_prev, c_prev = A_prev.shape
 
+    # c_previs the depth of the kernel == nb of channels
+    # c_new is the numbers of filters
     kh, kw, c_prev, c_new = W.shape
 
     sh, sw = stride
 
     if padding == "valid":
-        ph = int(0)
-        pw = int(0)
+        ph = 0
+        pw = 0
     elif padding == "same":
         ph = int(np.ceil((h_prev - 1) * sh + kh - h_prev) / 2)
         pw = int(np.ceil((w_prev - 1) * sw + kw - w_prev) / 2)
@@ -52,6 +54,7 @@ def conv_forward(A_prev, W, b,
     A_h = int(((h_prev + 2 * ph - kh) / sh) + 1)
     A_w = int(((w_prev + 2 * pw - kw) / sw) + 1)
 
+    # A is the outputof the convolutional layer
     A = np.zeros((m, A_h, A_w, c_new))
 
     # Add padding to the input image
