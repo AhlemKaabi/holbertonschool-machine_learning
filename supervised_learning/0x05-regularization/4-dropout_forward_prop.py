@@ -27,7 +27,7 @@ def dropout_matrices(weights, m, keep_prob, L):
         # initialize the random values for the dropout matrix
         D[str(i)] = np.random.rand(weights['W' + str(i)].shape[0], m)
         # Convert it to 0/1 to shut down neurons corresponding to each element
-        D[str(i)] = (D[str(i)] < 1 -keep_prob).astype(int)
+        D[str(i)] = (D[str(i)] < 1 - keep_prob).astype(int)
         assert(D[str(i)].shape == (weights['W' + str(i)].shape[0], m))
     return D
 
