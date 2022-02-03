@@ -63,7 +63,7 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes,
     #     # creates the training operation for the network
     #     train_op = create_train_op(loss, alpha)
 
-    init = tf.compat.v1.global_variables_initializer()
+    init = tf.initializers.global_variables()
 
     saver = tf.train.Saver()
 
