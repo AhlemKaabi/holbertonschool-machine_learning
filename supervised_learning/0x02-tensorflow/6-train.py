@@ -72,11 +72,11 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes,
         for i in range(iterations + 1):
             train_loss = sess.run(loss, feed_dict={x: X_train, y: Y_train})
             train_accuracy = sess.run(accuracy,
-                                        feed_dict={x: X_train, y: Y_train})
+                                      feed_dict={x: X_train, y: Y_train})
             valid_loss = sess.run(loss,
-                                    feed_dict={x: X_valid, y: Y_valid})
+                                  feed_dict={x: X_valid, y: Y_valid})
             valid_accuracy = sess.run(accuracy,
-                                        feed_dict={x: X_valid, y: Y_valid})
+                                      feed_dict={x: X_valid, y: Y_valid})
             if i < 100:
                 sess.run(train_op, feed_dict={x: X_train, y: Y_train})
             if i == iterations or i % 100 == 0:
