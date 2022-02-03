@@ -9,10 +9,15 @@ def create_layer(prev, n, activation):
     """
     Method:
         Creating a layer.
-    @prev: is the tensor output of the previous layer
-    @n: is the number of nodes in the layer to create
-    @activation: is the activation function that the layer
-     should use
+
+    Parameters:
+        @prev: is the tensor output of the previous layer
+        @n: is the number of nodes in the layer to create
+        @activation: is the activation function that the layer
+        should use
+
+    Returns:
+        the tensor output of the layer
     """
     # https://keras.io/api/layers/core_layers/dense/
 
