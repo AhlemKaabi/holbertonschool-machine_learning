@@ -33,7 +33,7 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes,
     Returns:
         the path where the model was saved.
     """
-    x, y = create_placeholders(784, 10)
+    x, y = create_placeholders(X_train.shape[1], Y_train.shape[1])
     y_pred = forward_prop(x, layer_sizes, activations)
     loss = calculate_loss(y, y_pred)
     accuracy = calculate_accuracy(y, y_pred)
