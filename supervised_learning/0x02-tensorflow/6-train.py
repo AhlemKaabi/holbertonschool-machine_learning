@@ -33,45 +33,57 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes,
     Returns:
         the path where the model was saved.
     """
+    x, y = create_placeholders(784, 10)
+    y_pred = forward_prop(x, layer_sizes, activations)
+    loss = calculate_loss(y, y_pred)
+    accuracy = calculate_accuracy(y, y_pred)
+    train_op = create_train_op(loss, alpha)
 
-    g = tf.Graph()
+    tf.add_to_collection("x", x)
+    tf.add_to_collection("y", y)
+    tf.add_to_collection("y_pred", y_pred)
+    tf.add_to_collection("loss", loss)
+    tf.add_to_collection("accuracy", accuracy)
+    tf.add_to_collection("train_op", train_op)
 
-    with g.as_default():
-        # create_placeholders(nx, classes)
-        x, y = create_placeholders(784, 10)
-        # forward_prop(x, layer_sizes=[], activations=[])
-        # creates the forward propagation graph for the neural network
-        y_pred = forward_prop(x, layer_sizes, activations)
-        # calculate_loss(y, y_pred)
-        loss = calculate_loss(y, y_pred)
-        # calculate_accuracy(y, y_pred)
-        accuracy = calculate_accuracy(y, y_pred)
+    # g = tf.Graph()
 
-        # create_train_op(loss, alpha)
-        # creates the training operation for the network
-        train_op = create_train_op(loss, alpha)
+    # with g.as_default():
+    #     # create_placeholders(nx, classes)
+    #     x, y = create_placeholders(784, 10)
+    #     # forward_prop(x, layer_sizes=[], activations=[])
+    #     # creates the forward propagation graph for the neural network
+    #     y_pred = forward_prop(x, layer_sizes, activations)
+    #     # calculate_loss(y, y_pred)
+    #     loss = calculate_loss(y, y_pred)
+    #     # calculate_accuracy(y, y_pred)
+    #     accuracy = calculate_accuracy(y, y_pred)
 
-        init = tf.compat.v1.global_variables_initializer()
+    #     # create_train_op(loss, alpha)
+    #     # creates the training operation for the network
+    #     train_op = create_train_op(loss, alpha)
 
-        saver = tf.train.Saver()
+    init = tf.compat.v1.global_variables_initializer()
 
-        with tf.Session(graph=g) as sess:
-            sess.run(init)
-            for i in range(iterations + 1):
-                train_loss = sess.run(loss, feed_dict={x: X_train, y: Y_train})
-                train_accuracy = sess.run(accuracy,
-                                          feed_dict={x: X_train, y: Y_train})
-                valid_loss = sess.run(loss,
-                                      feed_dict={x: X_train, y: Y_train})
-                valid_accuracy = sess.run(accuracy,
-                                          feed_dict={x: X_train, y: Y_train})
-                if i % 100 == 0:
-                    print('After {} iterations:'.format(i))
-                    print('\tTraining Cost: {}'.format(train_loss))
-                    print('\tTraining Accuracy: {}'.format(train_accuracy))
-                    print('\tValidation Cost: {}'.format(valid_loss))
-                    print('\tValidation Accuracy: {}'.format(valid_accuracy))
-                if i < 100:
-                    sess.run(train_op, feed_dict={x: X_train, y: Y_train})
-            save_path = saver.save(sess, save_path)
-            return save_path
+    saver = tf.train.Saver()
+
+    with tf.Session() as sess:
+        sess.run(init)
+        for i in range(iterations + 1):
+            train_loss = sess.run(loss, feed_dict={x: X_train, y: Y_train})
+            train_accuracy = sess.run(accuracy,
+                                        feed_dict={x: X_train, y: Y_train})
+            valid_loss = sess.run(loss,
+                                    feed_dict={x: X_train, y: Y_train})
+            valid_accuracy = sess.run(accuracy,
+                                        feed_dict={x: X_train, y: Y_train})
+            if i % 100 == 0:
+                print('After {} iterations:'.format(i))
+                print('\tTraining Cost: {}'.format(train_loss))
+                print('\tTraining Accuracy: {}'.format(train_accuracy))
+                print('\tValidation Cost: {}'.format(valid_loss))
+                print('\tValidation Accuracy: {}'.format(valid_accuracy))
+            if i < 100:
+                sess.run(train_op, feed_dict={x: X_train, y: Y_train})
+        save_path = saver.save(sess, save_path)
+        return save_path
