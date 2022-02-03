@@ -79,7 +79,7 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes,
                                         feed_dict={x: X_train, y: Y_train})
             if i < 100:
                 sess.run(train_op, feed_dict={x: X_train, y: Y_train})
-            if i % 100 == 0:
+            if i == iterations or i % 100 == 0:
                 print('After {} iterations:'.format(i))
                 print('\tTraining Cost: {}'.format(train_loss))
                 print('\tTraining Accuracy: {}'.format(train_accuracy))
