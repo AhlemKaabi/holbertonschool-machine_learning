@@ -5,7 +5,6 @@
 import tensorflow.compat.v1 as tf
 
 
-
 def evaluate(X, Y, save_path):
     """
     Method:
@@ -27,6 +26,7 @@ def evaluate(X, Y, save_path):
     # https://docs.w3cub.com/tensorflow~python/meta_graph
     with tf.Session() as session:
         saver = tf.train.import_meta_graph(save_path + ".meta")
+
         saver.restore(session, save_path)
         # graph = tf.get_default_graph()
         # x = graph.get_operation_by_name('x').outputs[0]
