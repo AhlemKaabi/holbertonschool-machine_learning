@@ -51,7 +51,7 @@ class Poisson:
         if n == 1 or n == 0:
             return 1
         else:
-            return  n * self.fact(n - 1);
+            return n * self.fact(n - 1)
 
     def pmf(self, k):
         """
@@ -69,7 +69,8 @@ class Poisson:
             k = int(k)
 
         if k > 0:
-            p = ((self.e ** -self.lambtha) * (self.lambtha ** k)) / self.fact(k)
+            k_ = self.fact(k)
+            p = ((self.e ** -self.lambtha) * (self.lambtha ** k)) / k_
             return p
         else:
             return 0
