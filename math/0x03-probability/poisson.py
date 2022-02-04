@@ -66,15 +66,11 @@ class Poisson:
         Returns:
             the PMF value for k
         """
-        if type(k) != int:
-            k = int(k)
-
-        if k > 0:
-            k_ = self.fact(k)
-            p = ((self.e ** -self.lambtha) * (self.lambtha ** k)) / k_
-            return p
-        else:
+        k = int(k)
+        if k < 0:
             return 0
+        k_ = self.fact(k)
+        return ((self.e ** -self.lambtha) * (self.lambtha ** k)) / k_
 
     def cdf(self, k):
         """
