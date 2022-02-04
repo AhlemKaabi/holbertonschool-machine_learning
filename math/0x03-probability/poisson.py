@@ -89,10 +89,9 @@ class Poisson:
             the PMF value for k
         """
         k = int(k)
-        if k > 0:
-            cdf = 0
-            for k in range(1, k + 1):
-                cdf += self.pmf(k)
-            return cdf
-        else:
+        if k <= 0:
             return 0
+        cdf = 0
+        for k in range(1, k + 1):
+            cdf += self.pmf(k)
+        return cdf
