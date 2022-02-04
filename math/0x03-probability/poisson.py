@@ -23,12 +23,12 @@ class Poisson:
                 ValueError: data must contain multiple values
         """
         self.lambtha = float(lambtha)
-
         if data is None:
             if (lambtha <= 0):
                 raise ValueError("lambtha must be a positive value")
-        if (type(data) is not list):
-            raise TypeError("data must be a list")
-        if (len(data) < 2):
-            raise ValueError("data must contain multiple values")
-        self.lambtha = float(sum(data) / len(data))
+        else:
+            if (type(data) is not list):
+                raise TypeError("data must be a list")
+            if (len(data) < 2):
+                raise ValueError("data must contain multiple values")
+            self.lambtha = float(sum(data) / len(data))
