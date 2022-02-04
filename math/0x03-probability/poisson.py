@@ -94,10 +94,7 @@ class Poisson:
         if k > 0:
             cdf = 0
             for k in range(1, k + 1):
-                term1 = self.lambtha ** k
-                term2 = self.e ** -self.lambtha
-                term3 = self.fact(k)
-                cdf += (term1 * term2) / term3
+                cdf += self.pmf(k)
             return cdf
         else:
             return 0
