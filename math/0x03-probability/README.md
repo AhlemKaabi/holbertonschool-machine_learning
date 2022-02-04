@@ -1,7 +1,5 @@
 # Probability
 
-**Holberton School project - Machine learning Specialization**
-
 **Learning Objectives**
 
 
@@ -16,3 +14,6 @@
 * What is a percentile?
 * What is mean, standard deviation, and variance?
 * Common probability distributions
+
+
+***Holberton School project - Machine learning Specialization***
