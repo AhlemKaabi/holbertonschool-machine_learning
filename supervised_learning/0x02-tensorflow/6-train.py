@@ -49,8 +49,9 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes,
     # g = tf.Graph()
 
     # with g.as_default():
+    #
     #     # create_placeholders(nx, classes)
-    #     x, y = create_placeholders(784, 10)
+    #     x, y = create_placeholders(X_train.shape[1], Y_train.shape[1])
     #     # forward_prop(x, layer_sizes=[], activations=[])
     #     # creates the forward propagation graph for the neural network
     #     y_pred = forward_prop(x, layer_sizes, activations)
@@ -62,21 +63,23 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes,
     #     # create_train_op(loss, alpha)
     #     # creates the training operation for the network
     #     train_op = create_train_op(loss, alpha)
+    #
 
     init = tf.initializers.global_variables()
 
     saver = tf.train.Saver()
+
 
     with tf.Session() as sess:
         sess.run(init)
         for i in range(iterations + 1):
             train_loss = sess.run(loss, feed_dict={x: X_train, y: Y_train})
             train_accuracy = sess.run(accuracy,
-                                      feed_dict={x: X_train, y: Y_train})
+                                    feed_dict={x: X_train, y: Y_train})
             valid_loss = sess.run(loss,
-                                  feed_dict={x: X_valid, y: Y_valid})
+                                feed_dict={x: X_valid, y: Y_valid})
             valid_accuracy = sess.run(accuracy,
-                                      feed_dict={x: X_valid, y: Y_valid})
+                                    feed_dict={x: X_valid, y: Y_valid})
             if i < iterations:
                 sess.run(train_op, feed_dict={x: X_train, y: Y_train})
             if i == iterations or i % 100 == 0:
