@@ -90,4 +90,3 @@ class Poisson:
         for k in range(k + 1):
             cdf += self.pmf(k)
         return cdf
-
