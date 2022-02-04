@@ -46,4 +46,4 @@ def evaluate(X, Y, save_path):
         prediction = session.run(y_pred, feed_dict={x: X, y: Y})
         acc_eval = session.run(accuracy, feed_dict={x: X, y: Y})
         loss_eval = session.run(loss, feed_dict={x: X, y: Y})
-    return prediction, acc_eval, loss_eval
+        return prediction, acc_eval, loss_eval
