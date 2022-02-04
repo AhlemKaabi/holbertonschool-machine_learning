@@ -44,6 +44,6 @@ def evaluate(X, Y, save_path):
     #     loss = graph.get_operation_by_name('loss').outputs[0]
 
         prediction = session.run(y_pred, feed_dict={x: X, y: Y})
-        accuracy = session.run(accuracy, feed_dict={x: X, y: Y})
-        loss = session.run(loss, feed_dict={x: X, y: Y})
-        return prediction, accuracy, loss
+        acc_eval = session.run(accuracy, feed_dict={x: X, y: Y})
+        loss_eval = session.run(loss, feed_dict={x: X, y: Y})
+        return prediction, acc_eval, loss_eval
