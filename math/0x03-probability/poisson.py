@@ -88,9 +88,7 @@ class Poisson:
         Returns:
             the PMF value for k
         """
-        if type(k) != int:
-            k = int(k)
-
+        k = int(k)
         if k > 0:
             cdf = 0
             for k in range(1, k + 1):
