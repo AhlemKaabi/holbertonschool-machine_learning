@@ -65,10 +65,9 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes,
     #     train_op = create_train_op(loss, alpha)
     #
 
-    init = tf.initializers.global_variables()
+    init = tf.global_variables_initializer()
 
     saver = tf.train.Saver()
-
 
     with tf.Session() as sess:
         sess.run(init)
