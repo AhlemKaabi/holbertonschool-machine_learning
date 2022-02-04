@@ -9,6 +9,7 @@ class Poisson:
     """
     Class Poisson that represents a poisson distribution.
     """
+    # https://www.sciencedirect.com/topics/mathematics/poisson-distribution
     def __init__(self, data=None, lambtha=1.):
         """
             Args:
@@ -72,5 +73,31 @@ class Poisson:
             k_ = self.fact(k)
             p = ((self.e ** -self.lambtha) * (self.lambtha ** k)) / k_
             return p
+        else:
+            return 0
+
+    def cdf(self, k):
+        """
+        Method:
+            Calculates the value of the CDF for
+            a given number of “successes”
+
+        Args:
+            @k: the number of “successes”
+
+        Returns:
+            the PMF value for k
+        """
+        if type(k) != int:
+            k = int(k)
+
+        if k > 0:
+            cdf = 0
+            for k in range(1, k + 1):
+                term1 = self.lambtha ** k
+                term2 = self.e ** -self.lambtha
+                term3 = self.fact(k)
+                cdf += (term1 * term2) / term3
+            return cdf
         else:
             return 0
