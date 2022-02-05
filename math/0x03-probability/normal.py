@@ -21,24 +21,24 @@ class Normal:
             @mean: the mean of the distribution.
             @stddev: standard deviation of the distribution.
         """
+        self.mean = float(mean)
+
         # lambda: average time/space == mean!
         if data is None:
             if stddev <= 0:
-                raise ValueError("lambtha must be a positive value")
+                raise ValueError("stddev must be a positive value")
             self.stddev = float(stddev)
-            self.mean = float(mean)
-
         else:
-            if isinstance(data, list) is False:
+            if type(data) is not list:
                 raise TypeError("data must be a list")
             if(len(data)) < 3:
                 raise ValueError("data must contain multiple values")
             # https://en.wikipedia.org/wiki/Standard_deviation
             self.mean = (sum(data) / len(data))
-            sum_squre = 0
+            sum_square = 0
             for val in data:
-                sum_squre += (val - self.mean) ** 2
-            variance = sum_squre / len(data)
+                sum_square += (val - self.mean) ** 2
+            variance = sum_square / len(data)
             self.stddev = variance ** (1/2)
 
     def z_score(self, x):
