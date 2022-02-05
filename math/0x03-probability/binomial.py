@@ -29,7 +29,7 @@ class Binomial:
             mean = (sum(data) / len(data))
             sum_square = 0
             for val in data:
-                sum_square += (val - self.mean) ** 2
+                sum_square += (val - mean) ** 2
             variance = sum_square / len(data)
             p = 1 - (variance / mean)
             self.n = round(mean / p)
