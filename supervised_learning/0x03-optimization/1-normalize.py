@@ -2,6 +2,8 @@
 """
     Normalize
 """
+
+
 def normalize(X, m, s):
     """
     normalizes (standardizes) a matrix
@@ -18,3 +20,5 @@ def normalize(X, m, s):
     Returns:
         The normalized X matrix
     """
+    N = (X - m) / s
+    return N
