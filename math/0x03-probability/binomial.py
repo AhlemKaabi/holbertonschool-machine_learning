@@ -14,7 +14,7 @@ class Binomial:
             @n: the number of Bernoulli trials
             @p: the probability of a “success”
            """
-        self.n = float(n)
+        self.n = int(n)
         self.p = float(p)
         if data is None:
             if n <= 0:
