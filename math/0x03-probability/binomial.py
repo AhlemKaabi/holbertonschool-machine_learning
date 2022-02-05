@@ -53,6 +53,9 @@ class Binomial:
             return n * self.fact(n - 1)
 
     def pmf(self, k):
+        """
+            PMF
+        """
         if isinstance(k, int) is False:
             k = int(k)
         if k < 0:
@@ -65,6 +68,9 @@ class Binomial:
         return pmf
 
     def cdf(self, k):
+        """
+            CDF
+        """
         k = int(k)
         if k < 0:
             return 0
