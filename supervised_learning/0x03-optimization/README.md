@@ -2,8 +2,6 @@
 
 In machine learning, Optimizing algorithms is essential to find the best "way" to get efficient results.
 
-**Holberton School project - Machine learning Specialization**
-
 In this project we apply diffrent optimization algorithms used in machine learning.
 
 ### **Learning Objectives**
@@ -20,3 +18,5 @@ In this project we apply diffrent optimization algorithms used in machine learni
 * What is Adam optimization? How do you implement it?
 * What is learning rate decay? How do you implement it?
 * What is batch normalization? How do you implement it?
+
+***Holberton School project - Machine learning Specialization***
