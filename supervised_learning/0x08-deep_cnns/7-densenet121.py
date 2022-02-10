@@ -38,7 +38,7 @@ def densenet121(growth_rate=32, compression=1.0):
 
     dense_block_1 = dense_block(max_pooling, 56, growth_rate, 6)
 
-    print(dense_block_1)
+    # print(dense_block_1)
     transition_black_1 = transition_layer(dense_block_1[0],
                                           dense_block_1[1],
                                           compression)
