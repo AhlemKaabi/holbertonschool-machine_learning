@@ -33,7 +33,7 @@ def resnet50():
                                         padding='same')(activation)
 
     # ------------- convolution --------------------#
-    conv2_proj1 = projection_block(max_pooling, [64, 64, 256])
+    conv2_proj1 = projection_block(max_pooling, [64, 64, 256], s=1)
     con2_inde2 = identity_block(conv2_proj1, [64, 64, 256])
     conv2_inde3 = identity_block(con2_inde2, [64, 64, 256])
     # ------------- convolution --------------------#
