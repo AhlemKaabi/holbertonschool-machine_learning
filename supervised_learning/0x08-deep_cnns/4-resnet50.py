@@ -61,8 +61,8 @@ def resnet50():
     # print(con5_inde3.shape)
     # ------------- convolution --------------------#
 
-    avg_pooling = K.layers.AveragePooling2D(pool_size=(7, 7),
-                                            strides=1)(con5_inde3)
+    avg_pooling = K.layers.AveragePooling2D(pool_size=(7, 7)
+                                            )(con5_inde3)
 
     output_layer = K.layers.Dense(1000,
                                   kernel_initializer=init,
