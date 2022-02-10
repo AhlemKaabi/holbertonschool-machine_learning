@@ -99,7 +99,7 @@ def inception_network():
     # print(avg_pool0.shape)
 
     dropout0 = K.layers.Dropout(0.4)(avg_pool0)
-    print("dropout shape", dropout0.shape)
+    # print("dropout shape", dropout0.shape)
     # Flatten = K.layers.Flatten()(dropout0)
     # print(Flatten.shape)
 
