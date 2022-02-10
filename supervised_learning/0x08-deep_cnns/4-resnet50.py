@@ -24,7 +24,6 @@ def resnet50():
 
     conv1 = K.layers.Conv2D(64, 7, strides=2,
                             padding='same',
-                            activation='relu',
                             kernel_initializer=init)(input_layer)
     batch_norm = K.layers.BatchNormalization()(conv1)
 
