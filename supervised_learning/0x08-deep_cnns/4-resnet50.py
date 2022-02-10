@@ -55,7 +55,7 @@ def resnet50():
 
     # ------------- convolution --------------------#
 
-    conv5_proj1 = projection_block(con4_inde6, [512, 512, 2048], s=1)
+    conv5_proj1 = projection_block(con4_inde6, [512, 512, 2048])
     con5_inde2 = identity_block(conv5_proj1, [512, 512, 2048])
     con5_inde3 = identity_block(con5_inde2, [512, 512, 2048])
     # print(con5_inde3.shape)
