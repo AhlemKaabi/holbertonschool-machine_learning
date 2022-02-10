@@ -37,17 +37,17 @@ def inception_network():
     # print("max pooling 0 shape: ", max_pool0.shape)
     # max pooling 0 shape:  (None, 56, 56, 64)
 
-    convol1_1x1 = K.layers.Conv2D(64, 1, strides=1,
-                                  padding='same',
-                                  activation='relu',
-                                  kernel_initializer=init)(max_pool0)
+    # convol1_1x1 = K.layers.Conv2D(64, 1, strides=1,
+    #                               padding='same',
+    #                               activation='relu',
+    #                               kernel_initializer=init)(max_pool0)
 
     convolution2_3x3 = K.layers.Conv2D(192,
                                        3,
                                        strides=1,
                                        padding='same',
                                        activation='relu',
-                                       kernel_initializer=init)(convol1_1x1)
+                                       kernel_initializer=init)(max_pool0)
     # print("conv 1 shape", convolution1.shape)
     # # conv 1 shape (None, 56, 56, 192)
 
