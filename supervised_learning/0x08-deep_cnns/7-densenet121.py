@@ -36,7 +36,7 @@ def densenet121(growth_rate=32, compression=1.0):
     max_pooling = K.layers.MaxPooling2D(pool_size=(3, 3), strides=2,
                                         padding='same')(convolution)
 
-    dense_block_1 = dense_block(max_pooling, 56, growth_rate, 6)
+    dense_block_1 = dense_block(max_pooling, 64, growth_rate, 6)
 
     # print(dense_block_1)
     transition_black_1 = transition_layer(dense_block_1[0],
