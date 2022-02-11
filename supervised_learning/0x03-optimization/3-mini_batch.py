@@ -47,35 +47,27 @@ def train_mini_batch(X_train, Y_train,
     """
     m = X_train.shape[0]
     with tf.Session() as sess:
-        # import meta graph and restore session
         saver = tf.train.import_meta_graph(load_path + ".meta")
         saver.restore(sess, load_path)
-        # Get the following tensors and ops from the collection restored
         x = tf.get_collection('x')[0]
         y = tf.get_collection('y')[0]
         loss = tf.get_collection('loss')[0]
         accuracy = tf.get_collection('accuracy')[0]
         train_op = tf.get_collection('train_op')[0]
-        # loop over epochs - passes throught the training set
         for i in range(epochs):
-            # shuffle data
             X_shuffle, Y_shuffle = shuffle_data(X_train, Y_train)
-            # Before the first epoch and after every subsequent epoch
-            # should be printed
             train_cost = sess.run(loss, feed_dict={x: X_train, y: Y_train})
             train_accuracy = sess.run(accuracy, feed_dict={x: X_train,
                                                            y: Y_train})
             valid_cost = sess.run(loss, feed_dict={x: X_valid, y: Y_valid})
             valid_accuracy = sess.run(accuracy, feed_dict={x: X_valid,
                                                            y: Y_valid})
-            # print
             print("After {} epochs:".format(i))
             print("\tTraining Cost: {}".format(train_cost))
             print("\tTraining Accuracy: {}".format(train_accuracy))
             print("\tValidation Cost: {}".format(valid_cost))
             print("\tValidation Accuracy: {}".format(valid_accuracy))
             if i != epochs:
-                # get the number of iterations
                 iterations = m // batch_size
                 start_batch = 0
                 end_batch = batch_size
@@ -91,6 +83,5 @@ def train_mini_batch(X_train, Y_train,
                         print('\tStep {}:'.format(j))
                         print('\t\tCost: {}'.format(loss_train))
                         print('\t\tAccuracy: {}'.format(acc_train))
-        # Save session
         save = saver.save(sess, save_path)
         return save
