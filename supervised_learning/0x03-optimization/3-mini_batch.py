@@ -67,21 +67,21 @@ def train_mini_batch(X_train, Y_train,
             print("\tTraining Accuracy: {}".format(train_accuracy))
             print("\tValidation Cost: {}".format(valid_cost))
             print("\tValidation Accuracy: {}".format(valid_accuracy))
-            if i != epochs:
-                iterations = m // batch_size
-                start_batch = 0
-                end_batch = batch_size
-                for j in range(iterations):
-                    X_batch = X_shuffle[start_batch:end_batch]
-                    Y_batch = Y_shuffle[start_batch:end_batch]
-                    sess.run(train_op, {x: X_batch, y: Y_batch})
-                    loss_train = sess.run(loss, {x: X_batch, y: Y_batch})
-                    acc_train = sess.run(accuracy, {x: X_batch, y: Y_batch})
-                    start_batch += batch_size
-                    end_batch += batch_size
-                    if (j) % 100 == 0 and j != 0:
-                        print('\tStep {}:'.format(j))
-                        print('\t\tCost: {}'.format(loss_train))
-                        print('\t\tAccuracy: {}'.format(acc_train))
+
+            iterations = m // batch_size
+            start_batch = 0
+            end_batch = batch_size
+            for j in range(iterations):
+                X_batch = X_shuffle[start_batch:end_batch]
+                Y_batch = Y_shuffle[start_batch:end_batch]
+                sess.run(train_op, {x: X_batch, y: Y_batch})
+                loss_train = sess.run(loss, {x: X_batch, y: Y_batch})
+                acc_train = sess.run(accuracy, {x: X_batch, y: Y_batch})
+                start_batch += batch_size
+                end_batch += batch_size
+                if j % 100 == 0 and j != 0:
+                    print('\tStep {}:'.format(j))
+                    print('\t\tCost: {}'.format(loss_train))
+                    print('\t\tAccuracy: {}'.format(acc_train))
         save = saver.save(sess, save_path)
         return save
