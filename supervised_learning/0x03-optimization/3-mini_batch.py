@@ -63,9 +63,11 @@ def train_mini_batch(X_train, Y_train,
             # Before the first epoch and after every subsequent epoch
             # should be printed
             train_cost = sess.run(loss, feed_dict={x: X_train, y: Y_train})
-            train_accuracy = sess.run(accuracy, feed_dict={x: X_train, y: Y_train})
+            train_accuracy = sess.run(accuracy, feed_dict={x: X_train,
+                                                           y: Y_train})
             valid_cost = sess.run(loss, feed_dict={x: X_valid, y: Y_valid})
-            valid_accuracy = sess.run(accuracy, feed_dict={x: X_valid, y: Y_valid})
+            valid_accuracy = sess.run(accuracy, feed_dict={x: X_valid,
+                                                           y: Y_valid})
             # print
             print("After {} epochs:".format(i))
             print("\tTraining Cost: {}".format(train_cost))
