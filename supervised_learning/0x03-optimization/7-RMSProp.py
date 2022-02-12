@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
     RMSProp - Root Mean Squared Propagation
 """
