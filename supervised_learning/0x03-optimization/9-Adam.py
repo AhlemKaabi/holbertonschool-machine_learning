@@ -40,4 +40,4 @@ def update_variables_Adam(alpha, beta1, beta2,
 
     W = W - alpha * c_VdW / (np.sqrt(c_SdW) + epsilon)
 
-    return W, c_VdW, c_SdW
+    return W, VdW, SdW
