@@ -54,11 +54,11 @@ def train_mini_batch(X_train, Y_train,
         loss = tf.get_collection('loss')[0]
         accuracy = tf.get_collection('accuracy')[0]
         train_op = tf.get_collection('train_op')[0]
-        for i in range(epochs):
+        for i in range(0, epochs):
             X_shuffle, Y_shuffle = shuffle_data(X_train, Y_train)
-            train_cost = sess.run(loss, feed_dict={x: X_train, y: Y_train})
-            train_accuracy = sess.run(accuracy, feed_dict={x: X_train,
-                                                           y: Y_train})
+            train_cost = sess.run(loss, feed_dict={x: X_shuffle, y: Y_shuffle})
+            train_accuracy = sess.run(accuracy, feed_dict={x: X_shuffle,
+                                                           y: Y_shuffle})
             valid_cost = sess.run(loss, feed_dict={x: X_valid, y: Y_valid})
             valid_accuracy = sess.run(accuracy, feed_dict={x: X_valid,
                                                            y: Y_valid})
