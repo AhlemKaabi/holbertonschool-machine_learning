@@ -30,9 +30,6 @@ class Neuron:
         self.__b = 0
         self.__A = 0
 
-    # bundling data with the methods that operate on them.
-    # getter for retrieving the data
-    # the setter for changing the data. (we don't have stter here!)
     @property
     def W(self):
         """get the weights
