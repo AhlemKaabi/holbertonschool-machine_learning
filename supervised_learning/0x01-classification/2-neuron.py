@@ -30,9 +30,6 @@ class Neuron:
         self.__b = 0
         self.__A = 0
 
-    # bundling data with the methods that operate on them.
-    # getter for retrieving the data
-    # the setter for changing the data. (we don't have stter here!)
     @property
     def W(self):
         """get the weights
@@ -61,14 +58,13 @@ class Neuron:
         """
         Method:
             Calculates the forward propagation of the neuron
-		Args:
-			X (numpy.ndarray): shape (nx, m)
-				nx : he number of input features to the neuron
-				m : the number of examples
-		Returns:
-			Returns the private attribute __A
+        Args:
+            X (numpy.ndarray): shape (nx, m)
+                nx : he number of input features to the neuron
+                m : the number of examples
+        Returns:
+            Returns the private attribute __A
         """
-        z = (self.W * self.A) + self.b
-        # new A using sigmoid activation function
+        z = np.matmul(self.__W, X) + self.b
         self.__A = 1 / (1 + np.exp(-z))
         return self.A
