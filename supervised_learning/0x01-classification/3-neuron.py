@@ -83,6 +83,8 @@ class Neuron:
             activated output of the neuron for each example.
         """
         features_number = Y.shape[1]
-        loss =  np.matmul(Y, np.log(A).T) + np.matmul((1 - Y), np.log(1.0000001 - A).T)
+        loss = np.matmul(Y,
+                         np.log(A).T) + np.matmul((1 - Y),
+                                                  np.log(1.0000001 - A).T)
         cost = -np.sum(loss) / features_number
         return cost
