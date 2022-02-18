@@ -26,6 +26,7 @@ class Neuron:
         if nx < 1:
             raise ValueError("nx must be a positive integer")
         # size=(1, nx) because we have one neuron (one unit)
+        # Public instance attributes.
         self.W = np.random.normal(size=(1, nx))
         self.b = 0
         self.A = 0

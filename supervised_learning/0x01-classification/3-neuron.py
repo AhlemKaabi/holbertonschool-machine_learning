@@ -69,7 +69,7 @@ class Neuron:
         """
         z = np.matmul(self.__W, X) + self.b
         self.__A = 1 / (1 + np.exp(-z))
-        return self.A
+        return self.__A
 
     def cost(self, Y, A):
         """
@@ -82,9 +82,9 @@ class Neuron:
             - A (numpy.ndarray) : shape (1, m) containing the
             activated output of the neuron for each example.
         """
-        features_number = Y.shape[1]
+        number_examples = Y.shape[1]
         loss = np.matmul(Y,
                          np.log(A).T) + np.matmul((1 - Y),
                                                   np.log(1.0000001 - A).T)
-        cost = -np.sum(loss) / features_number
+        cost = -np.sum(loss) / number_examples
         return cost
