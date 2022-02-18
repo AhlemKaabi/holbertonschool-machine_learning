@@ -83,6 +83,8 @@ class Neuron:
             activated output of the neuron for each example.
         """
         number_examples = Y.shape[1]
+        # To avoid division by zero errors,
+        # please use 1.0000001 - A instead of 1 - A
         loss = np.matmul(Y,
                          np.log(A).T) + np.matmul((1 - Y),
                                                   np.log(1.0000001 - A).T)
