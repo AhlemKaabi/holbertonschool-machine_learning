@@ -182,9 +182,9 @@ class Neuron:
         if alpha < 0:
             raise ValueError("alpha must be positive")
 
-        for i in iterations:
-            A = self.forward_prop()
-            self.gradient_descent(X, Y, A)
+        for _ in range(iterations):
+            A = self.forward_prop(X)
+            self.gradient_descent(X, Y, A, alpha=alpha)
 
         prediction, cost = self.evaluate(X, Y)
 
