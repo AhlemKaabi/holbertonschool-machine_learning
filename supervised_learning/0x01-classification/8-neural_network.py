@@ -34,7 +34,7 @@ class NeuralNetwork:
             raise ValueError("nx must be a positive integer")
         if type(nodes) is not int:
             raise TypeError("nx must be an integer")
-        if nodes < 1:
+        if nodes < 0:
             raise ValueError("nx must be a positive integer")
 
         self.W1 = np.random.normal(size=(nodes, nx))
