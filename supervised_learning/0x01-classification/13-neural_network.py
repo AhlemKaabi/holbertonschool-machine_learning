@@ -190,7 +190,7 @@ class NeuralNetwork:
 
         # derivative of a sigmoid activation function
         dA1 = A1 * (1 - A1)
-        dZ1 = np.matmul(dW2.T, dZ2) * dA1
+        dZ1 = np.matmul(self.__W2.T, dZ2) * dA1
         dW1 = np.matmul(X, dZ1.T) / number_examples
         db1 = np.sum(dZ1, axis=1, keepdims=True) / number_examples
         self.__W1 -= alpha * dW1.T
