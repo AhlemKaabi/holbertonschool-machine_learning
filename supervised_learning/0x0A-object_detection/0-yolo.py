@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
     Class Yolo that uses
-	the Yolo v3 algorithm to perform object detection.
+    the Yolo v3 algorithm to perform object detection.
 """
 import tensorflow.keras as K
 
@@ -26,8 +26,10 @@ class Yolo:
 
             anchors(numpy.ndarray), shape (outputs, anchor_boxes, 2)
               containing all of the anchor boxes:
-              - outputs is the number of outputs (predictions) made by the Darknet model
-              - anchor_boxes is the number of anchor boxes used for each prediction
+              - outputs is the number of outputs (predictions)
+              made by the Darknet model
+              - anchor_boxes is the number of anchor boxes
+              used for each prediction
                 2 => [anchor_box_width, anchor_box_height]
         """
         # the Darknet Keras model
