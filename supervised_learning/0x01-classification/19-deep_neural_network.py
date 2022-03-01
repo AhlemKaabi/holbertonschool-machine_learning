@@ -97,10 +97,32 @@ class DeepNeuralNetwork:
         self.cache['A0'] = X
         for l_ in range(self.L):
             W_l = self.weights['W' + str(l_ + 1)]
-            b_l = self.weights['b' + str(l_ + 1)]
+            b_l = self.weights['b' + str(l_)]
             A_prev = self.cache['A' + str(l_)]
             Z1 = np.matmul(W_l, A_prev) + b_l
             A_l = 1 / (1 + np.exp(-Z1))
             self.cache['A' + str(l_ + 1)] = A_l
         A = self.cache['A' + str(self.L)]
         return A, self.cache
+
+
+    def cost(self, Y, A):
+        """
+        Method:
+            The cost of the model using logistic regression
+        Args:
+            Y(numpy.ndarray), shape (1, m):
+             That contains the correct labels for the input data
+            A(numpy.ndarray), shape(1, m):
+              The activated output of the neuron for each
+        Returns:
+            The cost
+        """
+        number_examples = Y.shape[1]
+        # To avoid division by zero errors,
+        # please use 1.0000001 - A instead of 1 - A
+        loss = np.matmul(Y,
+                         np.log(A).T) + np.matmul((1 - Y),
+                                                  np.log(1.0000001 - A).T)
+        cost = -np.sum(loss) / number_examples
+        return cost

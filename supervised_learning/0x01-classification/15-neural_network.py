@@ -232,12 +232,6 @@ class NeuralNetwork:
         if alpha < 0:
             raise ValueError("alpha must be positive")
 
-        # for _ in range(iterations):
-        #     A1, A2 = self.forward_prop(X)
-        #     self.gradient_descent(X, Y, A1, A2, alpha=alpha)
-
-        # prediction, cost = self.evaluate(X, Y)
-
         # return prediction, cost
         plot_cost = []
         for i in range(iterations + 1):
