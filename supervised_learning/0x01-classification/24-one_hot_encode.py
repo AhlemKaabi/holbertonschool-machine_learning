@@ -26,11 +26,12 @@ def one_hot_encode(Y, classes):
 
     if not isinstance(Y, np.ndarray):
         return None
-    # https://www.kite.com/python/answers/how-to-do-one-hot-encoding-with-numpy-in-python
-    data = np.array(Y)
     # classes is larger than largest element in Y
     if classes > data.max():
         return None
+    # https://www.kite.com/python/answers/how-to-do-one-hot-encoding-with-numpy-in-python
+    data = np.array(Y)
+
     shape = (data.size, data.max() + 1)
     one_hot = np.zeros(shape)
     rows = np.arange(data.size)
