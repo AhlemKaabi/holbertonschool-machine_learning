@@ -287,5 +287,3 @@ class DeepNeuralNetwork:
             return pkd_DNN_obj
         except OSError:
             return None
-
-
