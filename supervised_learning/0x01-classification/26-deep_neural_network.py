@@ -279,6 +279,13 @@ class DeepNeuralNetwork:
         """
         if not filename:
             return None
-        with open(filename, 'rb') as fileObject:
-            pkd_DNN_obj = pickle.load(fileObject)
-        return pkd_DNN_obj
+        # handle load nonexistant filename
+        # https://stackoverflow.com/questions/48312948/python-with-command-detect-nonexistent-file
+        try:
+            with open(filename, 'rb') as fileObject:
+                pkd_DNN_obj = pickle.load(fileObject)
+            return pkd_DNN_obj
+        except OSError:
+            return None
+
+
