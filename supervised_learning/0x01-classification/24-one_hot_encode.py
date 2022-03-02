@@ -30,6 +30,9 @@ def one_hot_encode(Y, classes):
 
     # classes is larger than largest element in Y
     # classes is smaller than largest element in Y
+    if classes > max(Y) or classes < max(Y):
+        return None
+
     # https://www.kite.com/python/answers/how-to-do-one-hot-encoding-with-numpy-in-python
     data = np.array(Y)
     shape = (data.size, data.max() + 1)
