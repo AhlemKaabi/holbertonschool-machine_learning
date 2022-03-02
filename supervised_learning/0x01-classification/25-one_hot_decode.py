@@ -20,6 +20,6 @@ def one_hot_decode(one_hot):
         containing the numeric labels for each example,
         or None on failure
     """
-    if not isinstance(one_hot, np.ndarray) or len(one_hot.ndim) is not 2:
+    if not isinstance(one_hot, np.ndarray) or len(one_hot.shape) is not 2:
         return None
     return np.argmax(one_hot, axis=0)
