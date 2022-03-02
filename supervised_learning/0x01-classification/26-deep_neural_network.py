@@ -262,9 +262,9 @@ class DeepNeuralNetwork:
         if type(filename) is str:
             if filename[-4:] != '.pkl':
                 filename += '.pkl'
-        fileObject = open(filename, 'w')
-        pickle.dump(self, fileObject)
-        fileObject.close()
+        # For improved efficiency, it is recommended to use a binary protocol
+        with open(filename, 'wb') as fileObject:
+            pickle.dump(self, fileObject)
 
     @staticmethod
     def load(filename):
@@ -279,7 +279,6 @@ class DeepNeuralNetwork:
         """
         if not filename:
             return None
-        fileObject = open(filename, 'r')
-        pkd_DNN_obj = pickle.load(fileObject)
-        fileObject.close()
+        with open(filename, 'rb') as fileObject:
+            pkd_DNN_obj = pickle.load(fileObject)
         return pkd_DNN_obj
