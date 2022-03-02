@@ -22,9 +22,11 @@ def evaluate(X, Y, save_path):
     # tf.reset_default_graph()
 
     # saver = tf.train.Saver()
+    init = tf.global_variables_initializer()
 
     # https://docs.w3cub.com/tensorflow~python/meta_graph
     with tf.Session() as session:
+        session.run(init)
         saver = tf.train.import_meta_graph(save_path + ".meta")
 
         saver.restore(session, save_path)
