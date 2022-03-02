@@ -21,14 +21,18 @@ def one_hot_encode(Y, classes):
         A one-hot encoding of Y with shape (classes, m),
           or None on failure
     """
-    if not isinstance(classes, int) or classes < 1:
+    # classes is less than 2
+    if not isinstance(classes, int) or classes < 2:
         return None
 
     if not isinstance(Y, np.ndarray):
         return None
     # # classes is larger than largest element in Y
-    # if classes > data.max():
-    #     return None
+
+    # classes is smaller than largest element in Y
+    if classes < data.max():
+        return None
+
     # https://www.kite.com/python/answers/how-to-do-one-hot-encoding-with-numpy-in-python
     data = np.array(Y)
 
