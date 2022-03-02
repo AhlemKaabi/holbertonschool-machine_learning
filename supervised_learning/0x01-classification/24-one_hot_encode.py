@@ -26,9 +26,9 @@ def one_hot_encode(Y, classes):
 
     if not isinstance(Y, np.ndarray):
         return None
-    # classes is larger than largest element in Y
-    if classes > data.max():
-        return None
+    # # classes is larger than largest element in Y
+    # if classes > data.max():
+    #     return None
     # https://www.kite.com/python/answers/how-to-do-one-hot-encoding-with-numpy-in-python
     data = np.array(Y)
 
