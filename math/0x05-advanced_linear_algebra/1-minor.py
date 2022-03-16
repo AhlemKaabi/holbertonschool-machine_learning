@@ -61,6 +61,7 @@ def determinant(matrix):
          The determinant of matrix
     """
     # https://integratedmlai.com/find-the-determinant-of-a-matrix-with-pure-python-without-numpy-or-scipy/
+
     if len(matrix) == 1:
         return matrix[0][0]
     total = 0
@@ -103,6 +104,9 @@ def minor(matrix):
      Returns:
          The minor matrix of matrix
     """
+    if not isinstance(matrix, list):
+        raise TypeError("matrix must be a list of lists")
+
     mat_len = len(matrix)
 
     if not any(isinstance(el, list) for el in matrix):
