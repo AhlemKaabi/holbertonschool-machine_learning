@@ -105,21 +105,17 @@ def minor(matrix):
          The minor matrix of matrix
     """
     mat_len = len(matrix)
-    if mat_len == 1:
-        if len(matrix[0]) == 1:
-            return [[1]]
+
     if not isinstance(matrix, list) or mat_len == 0:
         raise TypeError("matrix must be a list of lists")
-
+    if mat_len == 1:
+        return [[1]]
     # for i in range(mat_len):
     #     if not isinstance(matrix[i], list):
     #         raise TypeError("matrix must be a list of lists")
 
     # if matrix == [[]]:
     #     return 1
-
-    if matrix == [[]]:
-        return 1
 
     for i in range(len(matrix)):
         if not isinstance(matrix[i], list) or not len(matrix[i]):
@@ -136,7 +132,6 @@ def minor(matrix):
             del mat[i]
             for line in mat:
                 del line[j]
-
             det = determinant(mat)
             row.append(det)
 
