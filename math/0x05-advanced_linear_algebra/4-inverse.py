@@ -170,4 +170,4 @@ def inverse(matrix):
             row.append(inv_op)
         # append to the cofactor
         cofactor.append(row)
-    return  transpose(cofactor)
+    return transpose(cofactor)
