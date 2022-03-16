@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+""" Determinant of a matrix in pure python"""
 
 def check_squareness(A):
     """
