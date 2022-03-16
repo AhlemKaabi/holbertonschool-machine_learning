@@ -105,9 +105,11 @@ def minor(matrix):
          The minor matrix of matrix
     """
     mat_len = len(matrix)
-
-    # if not isinstance(matrix, list) or mat_len == 0:
-    #     raise TypeError("matrix must be a list of lists")
+    if mat_len == 1:
+        if len(matrix[0]) == 1:
+            return [[1]]
+    if not isinstance(matrix, list) or mat_len == 0:
+        raise TypeError("matrix must be a list of lists")
 
     # for i in range(mat_len):
     #     if not isinstance(matrix[i], list):
@@ -115,18 +117,17 @@ def minor(matrix):
 
     # if matrix == [[]]:
     #     return 1
-    if not isinstance(matrix, list):
-        raise TypeError("matrix must be a list of lists")
 
     if matrix == [[]]:
         return 1
 
     for i in range(len(matrix)):
-        if len(matrix) != len(matrix[i]):
-            raise ValueError("matrix must be a square matrix")
-
         if not isinstance(matrix[i], list) or not len(matrix[i]):
             raise TypeError("matrix must be a list of lists")
+
+        if len(matrix) != len(matrix[i]):
+            raise ValueError("matrix must be a non-empty square matrix")
+
     minor = []
     for i in range(mat_len):
         row = []
