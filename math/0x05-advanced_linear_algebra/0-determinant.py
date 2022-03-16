@@ -61,42 +61,30 @@ def determinant(matrix):
     """
     # https://integratedmlai.com/find-the-determinant-of-a-matrix-with-pure-python-without-numpy-or-scipy/
     mat_len = len(matrix)
-
     for row in matrix:
         if len(row) == 0 and mat_len == 1:
             return 1
-
     if mat_len == 1:
         return matrix[0][0]
-
     if not any(isinstance(el, list) for el in matrix):
         raise TypeError("matrix must be a list of lists")
-
     check_squareness(matrix)
-
     total = 0
-
     A = matrix
     # Section 1: store indices in list for flexible row referencing
     indices = list(range(len(A)))
-
     # Section 2: when at 2x2 submatrices recursive calls end
     if len(A) == 2 and len(A[0]) == 2:
         val = A[0][0] * A[1][1] - A[1][0] * A[0][1]
         return val
-
     # Section 3: define submatrix for focus column and call this function
     for fc in indices:  # for each focus column, find the submatrix ...
         As = copy_matrix(A)  # make a copy, and ...
         As = As[1:]  # ... remove the first row
-
         height = len(As)
-
         for i in range(height):  # for each remaining row of submatrix ...
             As[i] = As[i][0:fc] + As[i][fc+1:]  # zero focus column elements
-
         sign = (-1) ** (fc % 2)  # alternate signs for submatrix multiplier
         sub_det = determinant(As)  # pass submatrix recursively
         total += sign * A[0][fc] * sub_det  # total all returns from recursion
-
     return total
