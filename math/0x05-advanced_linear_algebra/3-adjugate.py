@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+""" adjugate matrix of a matrix in pure python"""
 
 
 def check_squareness(A):

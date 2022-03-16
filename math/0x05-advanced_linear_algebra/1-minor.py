@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+""" Minor matrix of a matrix in pure python"""
 
 
 def check_squareness(A):
