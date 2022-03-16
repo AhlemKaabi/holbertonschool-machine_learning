@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-    Definiteness 
+    Definiteness
 """
 import numpy as np
 
