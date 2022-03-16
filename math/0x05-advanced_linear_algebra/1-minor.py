@@ -104,9 +104,10 @@ def minor(matrix):
      Returns:
          The minor matrix of matrix
     """
+    if not isinstance(matrix, list):
+        raise TypeError("matrix must be a list of lists")
     mat_len = len(matrix)
-
-    if not isinstance(matrix, list) or mat_len == 0:
+    if mat_len == 0:
         raise TypeError("matrix must be a list of lists")
     if mat_len == 1:
         return [[1]]
