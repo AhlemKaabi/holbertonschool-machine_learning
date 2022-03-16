@@ -104,20 +104,17 @@ def minor(matrix):
      Returns:
          The minor matrix of matrix
     """
-    if not isinstance(matrix, list):
-        raise TypeError("matrix must be a list of lists")
-
     mat_len = len(matrix)
 
-    if not any(isinstance(el, list) for el in matrix):
+    if not isinstance(matrix, list) or mat_len == 0:
         raise TypeError("matrix must be a list of lists")
 
-    for row in matrix:
-        if len(row) == 0 and mat_len == 1:
-            return 1
+    for i in range(mat_len):
+        if not isinstance(matrix[i], list):
+            raise TypeError("matrix must be a list of lists")
 
-    if mat_len == 1:
-        return [[1]]
+    if matrix == [[]]:
+        return 1
 
     check_squareness(matrix)
     minor = []
