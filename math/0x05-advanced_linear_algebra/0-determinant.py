@@ -80,7 +80,7 @@ def determinant(matrix):
         if len(matrix) != len(matrix[i]):
             raise ValueError("matrix must be a square matrix")
 
-        if not isinstance(matrix[i], list) or not len(matrix[i]):
+        if not isinstance(matrix[i], list):
             raise TypeError("matrix must be a list of lists")
 
     if len(matrix) == 1:
