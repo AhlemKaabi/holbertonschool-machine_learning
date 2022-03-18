@@ -62,4 +62,54 @@ Suppose A is an n × n matrix with real or complex entries. To find the cofactor
 
 the `adjugate matrix` is just the transpose of the `cofactor matrix` of A.
 
+## **Inverse Matrix**
+
+![inverse](./img/inverse1.png)
+
+Since |A| is in the denominator of the formula, the inverse of matrix exists only if the determinant of the matrix is a non-zero value. i.e., |A| ≠ 0
+
+**Singular Matrix:** A square matrix that does not have a matrix inverse. A matrix is singular if its determinant is 0.
+
+**Inverse matrix of 1x1 Matrix**
+The 1 x 1 matrix [[ a ]] has an inverse exactly when a is a nonzero real or complex number. The inverse is [[ 1/a] ].
+## **Definiteness**
+we only can define the Definiteness of a matrix if it is symetric.
+
+### **Positive Definite**
+One method: A matrix is positive definite if it’s symmetric and all its pivots are positive.
+
+Another method: A matrix is positive definite if Determinants of all upper-left sub-matrices are positive.
+
+Other method: A matrix is positive definite if it's symmetric and `all its eigenvalues are positive`.
+
+Is the following matrix Positive Definite?
+
+![positive_definit_mat](./img/positive_definit_mat.png)
+
+Find the determinants of all possible k \times k upper sub-matrices.
+
+![positive_definit_mat](./img/positive_definit_mat_deter.png)
+
+### **Negative Definite**
+
+One method: A matrix is negative definite if it’s `symmetric` and all its `pivots are negative`.
+example:
+
+```
+	|	-3	0	0	|
+	|	0	-2	0	|
+	|	0	0	-1	|
+```
+
+Other method: A matrix is negative definite if it's symmetric and `all its eigenvalues are negative`.
+
+### **Positive semi-definite**
+
+A matrix is positive semi-definite if it's symmetric and `all its eigenvalues are positive` and `contains at least one 0`.
+
+
+### **Negative Semi-definite**
+
+A matrix is negative semi-definite if it's symmetric and `all its eigenvalues are negative` and `contains at least one 0`.
+
 ***Holberton School Projects (Project-based learning Machine learning)***

@@ -11,6 +11,10 @@ if __name__ == '__main__':
     mat6 = [[1, 2, 3], [4, 5, 6]]
 
     print(cofactor(mat1))
+    try:
+        cofactor(mat1)
+    except Exception as e:
+        print(e)
     print(cofactor(mat2))
     print(cofactor(mat3))
     print(cofactor(mat4))
@@ -22,3 +26,20 @@ if __name__ == '__main__':
         cofactor(mat6)
     except Exception as e:
         print(e)
+
+    # try:
+    #     cofactor([[]])
+    # except ValueError as e:
+    #     print(str(e))
+    # try:
+    #     cofactor([[1], [1]])
+    # except ValueError as e:
+    #     print(str(e))
+    # try:
+    #     cofactor([[1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4]])
+    # except ValueError as e:
+    #     print(str(e))
+    # try:
+    #     cofactor([[1, 2, 3], [1, 2, 3, 4], [1, 2, 3]])
+    # except ValueError as e:
+    #     print(str(e))
