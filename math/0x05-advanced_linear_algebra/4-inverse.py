@@ -145,10 +145,10 @@ def inverse(matrix):
     mat_len = len(matrix)
 
     for i in range(len(matrix)):
-        if not isinstance(matrix[i], list) or not len(matrix[i]):
+        if not isinstance(matrix[i], list):
             raise TypeError("matrix must be a list of lists")
 
-        if len(matrix) != len(matrix[i]):
+        if len(matrix) != len(matrix[i]) or not len(matrix[i]):
             raise ValueError("matrix must be a non-empty square matrix")
 
     if mat_len == 1:
