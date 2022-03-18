@@ -69,7 +69,6 @@ def determinant(matrix):
 
     if mat_len == 1:
         return matrix[0][0]
-
     if not any(isinstance(el, list) for el in matrix):
         raise TypeError("matrix must be a list of lists")
 
@@ -152,7 +151,9 @@ def inverse(matrix):
             raise ValueError("matrix must be a non-empty square matrix")
 
     if mat_len == 1:
-        return [[1]]
+        if len(matrix[0]) == 1:
+            inv = 1/matrix[0][0]
+            return [[inv]]
     det_matrix = determinant(matrix)
     if det_matrix == 0:
         return None
@@ -161,10 +162,12 @@ def inverse(matrix):
         row = []
         for j in range(mat_len):
             mat = [vec[:] for vec in matrix]
+            # print(mat)
             del mat[i]
             for line in mat:
                 del line[j]
             det = determinant(mat)
+            # print(det)
             cofac = det * (-1) ** (i + j)
             inv_op = cofac / det_matrix
             row.append(inv_op)
