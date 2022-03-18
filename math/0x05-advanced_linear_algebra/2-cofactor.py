@@ -130,28 +130,15 @@ def cofactor(matrix):
          The cofactor matrix of matrix
     """
     # https://www.omnicalculator.com/math/cofactor-matrix
-    # mat_len = len(matrix)
-
-    # for row in matrix:
-    #     if len(row) == 0 and mat_len == 1:
-    #         return 1
-
-    # if mat_len == 1:
-    #     return [[1]]
-
-    # if not any(isinstance(el, list) for el in matrix):
-    #     raise TypeError("matrix must be a list of lists")
-
-    # check_squareness(matrix)
     if not isinstance(matrix, list) or matrix == []:
         raise TypeError("matrix must be a list of lists")
     mat_len = len(matrix)
 
     for i in range(len(matrix)):
-        if not isinstance(matrix[i], list) or not len(matrix[i]):
+        if not isinstance(matrix[i], list):
             raise TypeError("matrix must be a list of lists")
 
-        if len(matrix) != len(matrix[i]):
+        if len(matrix) != len(matrix[i]) or not len(matrix[i]):
             raise ValueError("matrix must be a non-empty square matrix")
 
     if mat_len == 1:
