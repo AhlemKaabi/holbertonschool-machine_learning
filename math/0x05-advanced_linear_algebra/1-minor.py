@@ -132,7 +132,7 @@ def minor(matrix):
         if not isinstance(matrix[i], list):
             raise TypeError("matrix must be a list of lists")
 
-        if not len(matrix[i]) or len(matrix) != len(matrix[i]) :
+        if not len(matrix[i]) or len(matrix) != len(matrix[i]):
             raise ValueError("matrix must be a non-empty square matrix")
 
     if mat_len == 1:
