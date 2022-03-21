@@ -79,7 +79,7 @@ Correlation, on the other hand, standardizes the measure of interdependence betw
 
 Correlation is just normalized Covariance refer to the formula below.
 
-![corr](./img/corr.png)
+![image](./img/corr.png)
 
 
 1. extract the variances from the diagonal elements of the covariance matrix
