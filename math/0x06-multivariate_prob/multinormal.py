@@ -34,3 +34,26 @@ class MultiNormal:
         self.mean = np.mean(data.T, axis=0).reshape(1, d).T
         term = data.T - self.mean.T
         self.cov = np.dot(term.T, term) / n
+
+    def pdf(self, x):
+        if not isinstance(x, np.ndarray):
+            raise TypeError('x must be a numpy.ndarray')
+
+        dim, _ = self.cov.shape
+
+        if len(x.shape) != 2 or x.shape[1] != 1 or x.shape[0] != dim:
+            raise ValueError("x must have the shape ({}, 1)".format(dim))
+
+        mult_term = np.dot(np.dot((x - self.mean).T,
+                                  np.linalg.inv(self.cov)),
+                           (x - self.mean))
+
+        term1 = (2 * np.pi) ** (dim / 2)
+
+        term2 = np.sqrt(np.linalg.det(self.cov))
+
+        term3 = np.exp((-1 / 2) * mult_term)
+
+        pdf = 1 / (term1 * term2) * term3
+
+        return pdf[0][0]
