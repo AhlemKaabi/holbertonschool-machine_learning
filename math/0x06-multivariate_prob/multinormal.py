@@ -36,6 +36,19 @@ class MultiNormal:
         self.cov = np.dot(term.T, term) / n
 
     def pdf(self, x):
+        """
+        Method:
+            Calculates the PDF at a data point.
+
+        Args:
+            x[numpy.ndarray] shape (d, 1)
+            containing the data point whose PDF should be calculated
+
+                - d: the number of dimensions of the Multinomial instance
+
+        Returns:
+            the value of the PDF
+        """
         if not isinstance(x, np.ndarray):
             raise TypeError('x must be a numpy.ndarray')
 
