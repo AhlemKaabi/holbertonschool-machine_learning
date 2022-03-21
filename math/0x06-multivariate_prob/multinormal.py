@@ -33,4 +33,4 @@ class MultiNormal:
 
         self.mean = np.mean(data.T, axis=0).reshape(1, d).T
         term = data.T - self.mean.T
-        self.cov = np.dot(term.T, term) / n - 1
+        self.cov = np.dot(term.T, term) / n
