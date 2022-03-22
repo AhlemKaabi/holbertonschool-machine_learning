@@ -20,3 +20,6 @@
 	* Viola–Jones object detection framework based on Haar features
 	* Scale-invariant feature transform (SIFT)
 	* Histogram of oriented gradients (HOG) features
+
+
+***Holberton School project - Machine learning Specialization***

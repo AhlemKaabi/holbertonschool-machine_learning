@@ -24,3 +24,6 @@ Keras is an open-source software library that provides a Python interface for ar
 * How to access the weights/outputs of a model
 * What is HDF5?
 * How to save and load a model’s weights, a model’s configuration, and the entire model
+
+
+***Holberton School project - Machine learning Specialization***

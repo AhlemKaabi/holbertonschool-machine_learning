@@ -2,6 +2,8 @@
 
 Building models from scratch to complete already solved tasks won’t save you time and resources. Transfer learning technique is a much better way!
 
+**Blog** - [Medium](https://ahlemkaabi1412.medium.com/transfer-learning-using-inceptionv3-keras-application-for-cifar-10-photo-classification-c3fbd8dd67a4 )
+
 ### **Introduction**
 
 Transfer Learning is another concept in machine learning. It is when we build a learning model based on previous knowledge (we implement already trained models — knowledge = weights and biases)
@@ -69,3 +71,6 @@ Epoch 2: early stopping
 * [tf.keras.layers.Lambda](https://www.tensorflow.org/api_docs/python/tf/keras/layers/Lambda)
 * [tf.image.resize](https://www.tensorflow.org/api_docs/python/tf/image/resize)
 * [A Survey on Deep Transfer Learning](https://intranet.hbtn.io/rltoken/094hW_tsJrotSljWeiCSSA)
+
+
+***Holberton School project - Machine learning Specialization***

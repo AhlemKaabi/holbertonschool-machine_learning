@@ -19,4 +19,8 @@ In this project we apply diffrent optimization algorithms used in machine learni
 * What is learning rate decay? How do you implement it?
 * What is batch normalization? How do you implement it?
 
+## **Blog - Gradient Descent Optimization Techniques for Machine Learning Algorithms**
+
+* check my blog on [Medium](https://ahlemkaabi1412.medium.com/gradient-descent-optimization-techniques-for-machine-learning-algorithms-f0c19de7023a ) or check it as post in my [LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:6901531689718222848/ )
+
 ***Holberton School project - Machine learning Specialization***
