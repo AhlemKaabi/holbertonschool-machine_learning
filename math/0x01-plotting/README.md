@@ -1,8 +1,9 @@
-# Plotting
+# **Plotting**
 
-**Holberton School project - Machine learning Specialization**
 
-**Learning objectives:**
+
+### **Learning objectives:**
+
 * What is a plot?
 * What is a scatter plot? line graph? bar graph? histogram?
 * What is `matplotlib`?
@@ -11,7 +12,7 @@
 * How to scale an axis
 * How to plot multiple sets of data at the same time
 
-
+***Holberton School project - Machine learning Specialization***
 
 
 
