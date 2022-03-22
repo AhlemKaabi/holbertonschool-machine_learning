@@ -1,6 +1,6 @@
 # Probability
 
-**Learning Objectives**
+### **Learning Objectives**
 
 
 * What is probability?
