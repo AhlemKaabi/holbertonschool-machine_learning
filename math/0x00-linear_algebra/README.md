@@ -17,3 +17,5 @@
 * What is Numpy?
 * What is parallelization and why is it important?
 * What is broadcasting?
+
+***Holberton School Projects (Project-based learning Machine learning)***
