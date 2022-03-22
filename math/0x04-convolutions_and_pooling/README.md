@@ -1,4 +1,4 @@
-# Convolutions and Pooling
+# **Convolutions and Pooling**
 
 In **mathematics** (in particular, *functional analysis*), `convolution` is a mathematical operation on two functions (f and g) that produces a third function ( f ∗ g ) that expresses how the shape of one is modified by the other.
 
@@ -19,4 +19,4 @@ The term **convolution** refers to both the result function and to the process o
 * How to perform a convolution over an image
 * How to perform max/average pooling over an image
 
-**Holberton School project - Machine learning Specialization**
+***Holberton School project - Machine learning Specialization***
