@@ -36,38 +36,38 @@ class MultiNormal:
         term = data.T - self.mean.T
         self.cov = np.dot(term.T, term) / (n - 1)
 
-    # def pdf(self, x):
-    #     """
-    #     Method:
-    #         Calculates the PDF at a data point.
+    def pdf(self, x):
+        """
+        Method:
+            Calculates the PDF at a data point.
 
-    #     Args:
-    #         x[numpy.ndarray] shape (d, 1)
-    #         containing the data point whose PDF should be calculated
+        Args:
+            x[numpy.ndarray] shape (d, 1)
+            containing the data point whose PDF should be calculated
 
-    #             - d: the number of dimensions of the Multinomial instance
+                - d: the number of dimensions of the Multinomial instance
 
-    #     Returns:
-    #         the value of the PDF
-    #     """
-    #     if not isinstance(x, np.ndarray):
-    #         raise TypeError('x must be a numpy.ndarray')
+        Returns:
+            the value of the PDF
+        """
+        if not isinstance(x, np.ndarray):
+            raise TypeError('x must be a numpy.ndarray')
 
-    #     dim, _ = self.cov.shape
+        dim, _ = self.cov.shape
 
-    #     if len(x.shape) != 2 or x.shape[1] != 1 or x.shape[0] != dim:
-    #         raise ValueError("x must have the shape ({}, 1)".format(dim))
+        if len(x.shape) != 2 or x.shape[1] != 1 or x.shape[0] != dim:
+            raise ValueError("x must have the shape ({}, 1)".format(dim))
 
-    #     mult_term = np.dot(np.dot((x - self.mean).T,
-    #                               np.linalg.inv(self.cov)),
-    #                        (x - self.mean))
+        mult_term = np.dot(np.dot((x - self.mean).T,
+                                  np.linalg.inv(self.cov)),
+                           (x - self.mean))
 
-    #     term1 = (2 * np.pi) ** (dim / 2)
+        term1 = (2 * np.pi) ** (dim / 2)
 
-    #     term2 = np.sqrt(np.linalg.det(self.cov))
+        term2 = np.sqrt(np.linalg.det(self.cov))
 
-    #     term3 = np.exp((-1 / 2) * mult_term)
+        term3 = np.exp((-1 / 2) * mult_term)
 
-    #     pdf = 1 / (term1 * term2) * term3
+        pdf = 1 / (term1 * term2) * term3
 
-    #     return pdf[0][0]
+        return pdf[0][0]
