@@ -36,8 +36,7 @@ def mean_cov(X):
         raise ValueError("X must contain multiple data points")
 
     n, d = X.shape
-
     mean = np.mean(X, axis=0).reshape(1, d)
     term = X - mean
-    cov_X_X = np.dot(term.T, term) / n - 1
+    cov_X_X = np.dot(term.T, term) / (n - 1)
     return mean, cov_X_X
