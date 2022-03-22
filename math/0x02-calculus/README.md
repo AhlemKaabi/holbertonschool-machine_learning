@@ -1,8 +1,7 @@
-# Calculus
+# **Calculus**
 
-**Holberton School project - Machine Learning Specialization**
 
-Learning Objectives
+### **Learning Objectives**
 
 * Summation and Product notation
 * What is a series?
@@ -15,3 +14,5 @@ Learning Objectives
 * What is an indefinite integral?
 * What is a definite integral?
 * What is a double integral?
+
+***Holberton School project - Machine Learning Specialization***
