@@ -24,7 +24,7 @@ def pca(X, ndim):
     # without Computing the (X.transpose X) covariance matrix
     # SVD: Singular Value Decomposition
     M = X - np.mean(X, axis=0)
-    _, _, vh = np.linalg.svd(X)
+    _, _, vh = np.linalg.svd(M)
 
     W = vh.T[:, :ndim]
-    return np.dot(M, W)
+    return M.dot(W)
