@@ -23,8 +23,8 @@ def pca(X, ndim):
     # We will calculate the W (Eigendecomposition) using the SVD
     # without Computing the (X.transpose X) covariance matrix
     # SVD: Singular Value Decomposition
-
+    M = X - np.mean(X, axis=0)
     _, _, vh = np.linalg.svd(X)
 
     W = vh.T[:, :ndim]
-    return X.dot(W)
+    return M.dot(W)
