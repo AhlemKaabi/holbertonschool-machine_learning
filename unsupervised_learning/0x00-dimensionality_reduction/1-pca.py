@@ -27,4 +27,4 @@ def pca(X, ndim):
     _, _, vh = np.linalg.svd(X)
 
     W = vh.T[:, :ndim]
-    return M.dot(W)
+    return np.dot(M, W)
