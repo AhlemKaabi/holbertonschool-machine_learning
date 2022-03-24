@@ -2,6 +2,7 @@
 """ Bayesian Probability """
 
 
+import py_compile
 from scipy import special
 
 
@@ -10,27 +11,21 @@ def posterior(x, n, p1, p2):
     update Docstring
 
     """
-    if type(n) is not int or n <= 0:
+    if type(n) is not int or n < 1:
         raise ValueError("n must be a positive integer")
-
     if type(x) is not int or x < 0:
-        raise ValueError(
-            "x must be an integer that is greater than or equal to 0"
-        )
-
+        text = "x must be an integer that is greater than or equal to 0"
+        raise ValueError(text)
     if x > n:
         raise ValueError("x cannot be greater than n")
-
-    if type(p1) is not float or p1 < 0 or p1 > 1:
+    if (not isinstance(p1, float)) or p1 < 0 or p1 > 1:
         raise ValueError("p1 must be a float in the range [0, 1]")
-
-    if type(p2) is not float or p2 < 0 or p2 > 1:
+    if (not isinstance(p2, float)) or p2 < 0 or p2 > 1:
         raise ValueError("p2 must be a float in the range [0, 1]")
-
     if p2 <= p1:
         raise ValueError("p2 must be greater than p1")
-
-    alpha = x + 1
-    beta = n - x + 1
-
-    return special.btdtr(alpha, beta, p1) - special.btdtr(alpha, beta, p2)
+    a = x + 1
+    b = n - x + 1
+    ac1 = special.btdtr(a, b, p1)
+    ac2 = special.btdtr(a, b, p2)
+    return ac2 - ac1
