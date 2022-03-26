@@ -28,11 +28,16 @@ Compress features, reduce overfitting and noise and increase eficciency and perf
 ![SVD](./img/SVD.png)
 
 
-## **PCA - Principal Component Analysis**
+## **PCA: Principal Component Analysis**
 
 PCA is a method for compressing a lot of data into something that captures the essence of the original data.
 
 * [Principal Component Analysis (PCA) clearly explained (2015)](https://www.youtube.com/watch?v=_UVHneBUBW0)
-* []()
 
+## **t-SNE: t-distributed Stochastic Neighborhood Embedding**
 
+t-SND is a dimention reduction/ data visualisation method!
+
+[How to Use t-SNE Effectively](https://distill.pub/2016/misread-tsne/)
+
+[t-SNE clearly explained](https://towardsdatascience.com/t-sne-clearly-explained-d84c537f53a)
