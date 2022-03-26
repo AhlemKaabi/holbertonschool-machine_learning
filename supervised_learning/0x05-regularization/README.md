@@ -2,8 +2,6 @@
 
 In mathematics, statistics, finance, computer science, particularly in machine learning and inverse problems, `regularization` is the process of adding information in order to solve an ill-posed problem or to prevent `overfitting`.
 
-**Holberton School project - Machine learning Specialization**
-
 
 ## **Learning Objectives**
 * What is *regularization*? What is its purpose?
