@@ -19,7 +19,7 @@ import numpy as np
 
 def initialize(X, k):
     """
-    Method to initializes cluster centroids for K-means.
+    Method to initialize cluster centroids for K-means.
 
     Parameters:
         X (numpy.ndarray of shape(n, d)):
