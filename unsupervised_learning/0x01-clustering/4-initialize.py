@@ -2,7 +2,6 @@
 """
     Initialize GMM - Gaussian Mixture Model
 """
-from tkinter import NO
 import numpy as np
 kmeans = __import__('1-kmeans').kmeans
 
