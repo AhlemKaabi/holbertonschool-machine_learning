@@ -41,6 +41,15 @@ The ‘means’ in the K-means refers to averaging of the data; that is, finding
 
 [more details](https://towardsdatascience.com/understanding-k-means-clustering-in-machine-learning-6a6e67336aa1).
 
+## **Gaussian Mixture Model**
+
+Gaussian mixture models are a probabilistic model for representing normally distributed subpopulations within an overall population. Mixture models in general don't require knowing which subpopulation a data point belongs to, allowing the model to learn the subpopulations automatically. Since subpopulation assignment is not known, this constitutes a form of unsupervised learning. - [Gaussian Mixture Model](https://brilliant.org/wiki/gaussian-mixture-model/)
+
+### **GMM - D>1**
+![GMM](./img/GMM.png)
+
+### **EM**
+![EM](./img/EM.png)
 
 ### **Installing Scikit-Learn 0.22.x**
 
