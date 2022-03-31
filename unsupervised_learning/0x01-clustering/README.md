@@ -49,6 +49,12 @@ Gaussian mixture models are a probabilistic model for representing normally dist
 ![GMM](./img/GMM.png)
 
 ### **EM**
+
+[Expectation Maximization: how it works](https://www.youtube.com/watch?v=iQoXFmbXRJA&list=PLBv09BD7ez_4e9LtmK626Evn1ion6ynrt&index=2)
+
+* E-Step. Estimate the expected value for each latent variable.
+* M-Step. Optimize the parameters of the distribution using maximum likelihood.
+
 ![EM](./img/EM.png)
 
 ### **Installing Scikit-Learn 0.22.x**
