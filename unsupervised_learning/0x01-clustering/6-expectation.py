@@ -5,6 +5,7 @@
 import numpy as np
 pdf = __import__('5-pdf').pdf
 
+
 def expectation(X, pi, m, S):
     """
     Method to calculate the expectation step in the EM algorithm
@@ -37,14 +38,14 @@ def expectation(X, pi, m, S):
     if not isinstance(S, np.ndarray) or len(S.shape) != 3:
         return None, None
 
-    k, _= m.shape
+    k, _ = m.shape
     n, d = X.shape
 
     if k > n:
         return None, None
     if m.shape[0] != k or m.shape[1] != d:
         return None, None
-    if S.shape[0]!= k or S.shape[1] != d or S.shape[2] != d:
+    if S.shape[0] != k or S.shape[1] != d or S.shape[2] != d:
         return None, None
     # sum of all pi elem == 1 if not -> retun
     if not np.isclose([np.sum(pi)], [1])[0]:
