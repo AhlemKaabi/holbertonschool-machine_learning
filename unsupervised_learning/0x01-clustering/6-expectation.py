@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-    Expectation -xpectation step in the EM algorithm
+    Expectation - expectation step in the EM algorithm
 """
 import numpy as np
 pdf = __import__('5-pdf').pdf
