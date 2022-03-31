@@ -33,6 +33,8 @@ def initialize(X, k):
     # https://www.youtube.com/watch?v=q71Niz856KE
     # pi: prior probabilities
     # https://www.vlfeat.org/overview/gmm.html
+
+    # prior: what % of instances came from source c.
     if not isinstance(X, np.ndarray) or len(X.shape) != 2:
         return None, None, None
 
