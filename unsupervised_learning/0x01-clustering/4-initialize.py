@@ -48,4 +48,3 @@ def initialize(X, k):
     S = np.tile(np.identity(d), (k, 1)).reshape(k, d, d)
 
     return pi, m, S
-
