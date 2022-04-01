@@ -106,4 +106,4 @@ def BIC(X, kmin=1, kmax=None, iterations=1000,
     # https://en.wikipedia.org/wiki/Bayesian_information_criterion
     best_reslt = (priors[best_k], centroid_means[best_k], covariances[best_k])
 
-    return best_k, best_reslt, log_likelihood, BIC_values
+    return best_k + 1, best_reslt, log_likelihood, BIC_values
