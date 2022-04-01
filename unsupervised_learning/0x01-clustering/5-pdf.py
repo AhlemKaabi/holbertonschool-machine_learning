@@ -43,4 +43,4 @@ def pdf(X, m, S):
     mul = np.dot((X - m), inv)
     exp_term = np.sum(mul * (X - m) / -2, axis=1)
     P = term1 * np.exp(exp_term)
-    return P
+    return np.where(P < 1e-300, 1e-300, P)
