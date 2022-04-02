@@ -73,6 +73,8 @@ pip install --user scikit-learn==0.22
 
 ## **Resources**
 
+[Gaussian Mixture Model (GMM) using Expectation Maximization (EM) Technique](https://intranet.hbtn.io/rltoken/nx7FAR2K2MXOTnGGW-lJ2A) - important slides!
+
 ### **Definitions to skim:**
 * [Cluster analysis](https://en.wikipedia.org/wiki/Cluster_analysis)
 
