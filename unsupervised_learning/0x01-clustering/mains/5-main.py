@@ -4,9 +4,15 @@ import numpy as np
 pdf = __import__('5-pdf').pdf
 
 if __name__ == '__main__':
-    np.random.seed(0)
-    m = np.array([12, 30, 10])
-    S = np.array([[36, -30, 15], [-30, 100, -20], [15, -20, 25]])
-    X = np.random.multivariate_normal(m, S, 10000)
+    # np.random.seed(0)
+    # m = np.array([12, 30, 10])
+    # S = np.array([[36, -30, 15], [-30, 100, -20], [15, -20, 25]])
+    # X = np.random.multivariate_normal(m, S, 10000)
+    # P = pdf(X, m, S)
+    # print(P)
+
+    X = np.tile(np.arange(-1000, 1000).reshape(-1, 1), 3)
+    m = np.zeros(3)
+    S = np.eye(3)
     P = pdf(X, m, S)
-    print(P)
+    print(np.min(P))
