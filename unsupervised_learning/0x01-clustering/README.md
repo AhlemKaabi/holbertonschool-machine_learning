@@ -69,7 +69,6 @@ Hierarchical clustering, also known as hierarchical cluster analysis, is an algo
 ```
 pip install --user scikit-learn==0.22
 ```
-```
 
 
 ## **Resources**
