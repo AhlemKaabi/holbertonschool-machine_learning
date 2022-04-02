@@ -105,5 +105,5 @@ def BIC(X, kmin=1, kmax=None, iterations=1000,
     # https://stackoverflow.com/questions/51144580/should-bic-bayesian-information-criterion-be-lower-or-higher
     # https://en.wikipedia.org/wiki/Bayesian_information_criterion
     best_reslt = (priors[best_k], centroid_means[best_k], covariances[best_k])
-
-    return best_k + 1, best_reslt, log_likelihood, BIC_values
+	# return the np.array type of BIC_values
+    return best_k + 1, best_reslt, log_likelihood, np.array(BIC_values)
