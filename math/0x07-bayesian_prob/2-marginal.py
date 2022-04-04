@@ -1,22 +1,27 @@
 #!/usr/bin/env python3
-""" Bayesian Probability """
-
-
+""" Bayesian Probability - Marginal Probability  """
 import numpy as np
-
-
-def marginal(x, n, P, Pr):
-    """
-    update Docstring
-
-    """
-    return np.sum(intersection(x, n, P, Pr))
 
 
 def intersection(x, n, P, Pr):
     """
-    update Docstring
+    Method to calculate the intersection of obtaining this
+    data with the various hypothetical probabilities.
 
+    Parameters:
+        x (int): the number of patients that develop severe
+          side effects.
+
+        n (int): the total number of patients observed.
+
+        P (1D numpy.ndarray): containing the various hypothetical
+          probabilities of developing severe side effects.
+
+        Pr (1D numpy.ndarray) containing the prior beliefs of P.
+
+    Returns:
+        (1D numpy.ndarray) containing the intersection of
+          obtaining x and n with each probability in P, respectively
     """
     if type(n) is not int or n <= 0:
         raise ValueError("n must be a positive integer")
@@ -35,8 +40,8 @@ def intersection(x, n, P, Pr):
     if type(Pr) is not np.ndarray or Pr.shape != P.shape:
         raise TypeError("Pr must be a numpy.ndarray with the same shape as P")
 
-    for pTe in P:
-        if pTe < 0 or pTe > 1:
+    for p in P:
+        if p < 0 or p > 1:
             raise ValueError(
                 "All values in P must be in the range [0, 1]"
             )
@@ -50,12 +55,21 @@ def intersection(x, n, P, Pr):
     if not np.isclose(np.sum(Pr), 1):
         raise ValueError("Pr must sum to 1")
 
-    # Compute the likelihood of x given n
-    res = np.math.factorial(n) / (
+    combinations = np.math.factorial(n) / (
         np.math.factorial(x) * np.math.factorial(n-x)
     )
-    likelihood = \
-        P ** x * res \
-        * (1-P) ** (n-x)
+    l = combinations * (P ** x) * ((1 - P) ** (n - x))
 
-    return likelihood * Pr
+    return l * Pr
+
+
+def marginal(x, n, P, Pr):
+    """
+    Method to calculate the marginal probability of
+    obtaining the data.
+
+    Returns:
+        the marginal probability of obtaining x and n
+    """
+    # https://youtu.be/r27mouuyFQk?list=PLFDbGp5YzjqXQ4oE4w9GVWdiokWB9gEpm
+    return np.sum(intersection(x, n, P, Pr))

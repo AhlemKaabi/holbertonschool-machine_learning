@@ -1,15 +1,27 @@
 #!/usr/bin/env python3
-""" Bayesian Probability """
-
-
-import py_compile
+""" Bayesian Probability - Continuous Posterior """
 from scipy import special
 
 
 def posterior(x, n, p1, p2):
     """
-    update Docstring
+    Method to calculate the posterior probability that the
+    probability of developing severe side effects falls within
+    a specific range given the data.
 
+    Parameters:
+        x (int): the number of patients that develop severe
+          side effects.
+
+        n (int): the total number of patients observed.
+
+        p1 (float): lower bound on the range.
+
+        p2 (float):  upper bound on the range.
+
+	Returns:
+		Returns: the posterior probability that p is within the
+  		range [p1, p2] given x and n.
     """
     if type(n) is not int or n < 1:
         raise ValueError("n must be a positive integer")
