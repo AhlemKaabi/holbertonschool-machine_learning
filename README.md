@@ -36,6 +36,7 @@
 * [0x06. Multivariate Probability](./math/0x06-multivariate_prob/)
 
 * [0x07. Bayesian Probability](./math/0x07-bayesian_prob/)
+
 ***Holberton School repository projects - Machine learning Specialization***
 
 *Project-based learning for Machine learning*
