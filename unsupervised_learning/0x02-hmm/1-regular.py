@@ -26,7 +26,7 @@ def regular(P):
     if len(P.shape) != 2:
         return None
     try:
-        power = np.linalg.matrix_power(P, 50)
+        power = np.linalg.matrix_power(P, 100)
     except Exception:
         # LinAlgError: matrices that are not square
         return None
