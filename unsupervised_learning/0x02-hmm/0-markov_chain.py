@@ -37,7 +37,7 @@ def markov_chain(P, s, t=1):
     if not isinstance(s, np.ndarray):
         return None
 
-    if s.ndim != 2 or s.shape[0] != 1 or s.shape[1] != n:
+    if s.ndim != 2 or s.shape[0] != 1 or s.shape[1] != x:
         return None
 
     if not isinstance(t, int) or t < 1:
