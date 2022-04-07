@@ -25,6 +25,27 @@ def markov_chain(P, s, t=1):
         (numpy.ndarray of shape (1, n)) representing the probability of being
         in a specific state after t iterations, or None on failure.
     """
+    if not isinstance(P, np.ndarray) or P.ndim != 2:
+        return None
+
+    x, y = P.shape
+
+    if x != y:
+        return None
+
+    if not isinstance(s, np.ndarray):
+        return None
+
+    if s.ndim != 2 or s.shape[0] != 1 or s.shape[1] != x:
+        return None
+
+    if not isinstance(t, int) or t < 1:
+        return None
+
+    for i in np.sum(P, axis=1):
+        if not np.isclose(i, 1):
+            return None
+
     state_matrix = s
 
     for _ in range(t):
