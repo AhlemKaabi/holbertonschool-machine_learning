@@ -2,7 +2,6 @@
 """
     Hidden Markov Models - Markov Chain
 """
-from re import X
 import numpy as np
 
 
