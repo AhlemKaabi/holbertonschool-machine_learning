@@ -25,3 +25,9 @@
 * What is the Forward-Backward algorithm and how do you implement it?
 * What is the Baum-Welch algorithm and how do you implement it?
 
+
+## **Notes**
+
+check folder [img](./img/)
+
+***Holberton School repository projects - Machine learning Specialization***
