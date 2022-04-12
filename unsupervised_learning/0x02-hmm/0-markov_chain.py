@@ -42,9 +42,11 @@ def markov_chain(P, s, t=1):
     if not isinstance(t, int) or t < 1:
         return None
 
-    for i in np.sum(P, axis=1):
-        if not np.isclose(i, 1):
-            return None
+    if np.any(np.sum(P, axis=1) != 1):
+        return None
+
+    if not np.sum(s) == 1:
+        return None
 
     state_matrix = s
 
