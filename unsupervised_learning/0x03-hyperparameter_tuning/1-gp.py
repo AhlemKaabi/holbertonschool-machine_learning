@@ -80,7 +80,7 @@ class GaussianProcess:
         sigma (numpy.ndarray of shape (s,)):
          containing the variance for each point in X_s, respectively.
         """
-
+        # https://colab.research.google.com/drive/1PvmTJWWRy4e5CaI93m7i49AY6xIMTlnY#scrollTo=GpWG-ENMrxoy&line=1&uniqifier=1
         K_s = self.kernel(self.X, X_s)
         K_ss = self.kernel(X_s, X_s)
         K_inv = np.linalg.inv(self.K)
