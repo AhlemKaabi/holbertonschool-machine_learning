@@ -25,16 +25,16 @@ class GaussianProcess:
 
                 - l (int): the length parameter for the kernel
 
-                - sigma_f (float): the standard deviation given to the output of
-                the black-box function
+                - sigma_f (float): the standard deviation given to the output
+                of the black-box function
         """
         self.X = X_init
         self.Y = Y_init
         self.l = l
         self.sigma_f = sigma_f
-        # the properties of a kernel (i.e. semi-positive definite and symmetric)
+        # the properties of a kernel (i.e. semi-positive definite and
+        # symmetric)
         self.K = self.kernel(X_init, X_init)
-
 
     def kernel(self, X1, X2):
         """
