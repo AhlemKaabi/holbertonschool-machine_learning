@@ -1,6 +1,13 @@
 #!/usr/bin/env python3
 """
     Gaussian Process
+
+    Machine learning - Introduction to Gaussian processes:
+        https://www.youtube.com/watch?v=4vGiHC35j9s
+
+
+    Notes:
+    - dot product mesure similarity
 """
 import numpy as np
 
