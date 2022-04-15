@@ -114,6 +114,9 @@ class GaussianProcess:
 
         * Updates the public instance attributes X, Y, and K *
         """
-        self.X = np.append(self.X, X_new).reshape(-1, 1)
-        self.Y = np.append(self.Y, Y_new).reshape(-1, 1)
+        # self.X = np.append(self.X, X_new).reshape(-1, 1)
+        # self.Y = np.append(self.Y, Y_new).reshape(-1, 1)
+        # Stack arrays in sequence vertically (row wise).
+        self.X = np.vstack((self.X, X_new))
+        self.Y = np.vstack((self.Y, Y_new))
         self.K = self.kernel(self.X, self.X)
