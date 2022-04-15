@@ -37,6 +37,16 @@
 
 * [0x07. Bayesian Probability](./math/0x07-bayesian_prob/)
 
+### **Machine Learning - Unsupervised Learning**
+
+* [0x00. Dimensionality Reduction](./unsupervised_learning/0x00-dimensionality_reduction/)
+
+* [0x01. Clustering ](./unsupervised_learning/0x01-clustering/)
+
+* [ 0x02. Hidden Markov Models](./unsupervised_learning/0x02-hmm/)
+
+* [0x03. Hyperparameter Tuning](./unsupervised_learning/0x03-hyperparameter_tuning/)
+
 ***Holberton School repository projects - Machine learning Specialization***
 
 *Project-based learning for Machine learning*
