@@ -75,22 +75,29 @@ class BayesianOptimization:
         # https://colab.research.google.com/github/krasserm/bayesian-machine-learning/blob/dev/bayesian-optimization/bayesian_optimization.ipynb#scrollTo=4lsMKUsR4w5m
         mu, sigma = self.gp.predict(self.X_s)
 
-        Z = np.zeros(sigma.shape[0])
+        # Z = np.zeros(sigma.shape[0])
 
+        # optimization
         if (self.minimize):
+            # the function f: value of the best sample
             mu_sample_opt = np.min(self.gp.Y)
+            # minimize => reduce the mean!
             improve = mu_sample_opt - mu - self.xsi
         else:
+            # the function f: value of the best sample
             mu_sample_opt = np.max(self.gp.Y)
             improve = mu - mu_sample_opt - self.xsi
 
-        for i in range(sigma.shape[0]):
-            if sigma[i] > 0:
-                Z[i] = improve[i] / sigma[i]
-            else:
-                Z[i] = 0
-            EI = improve * norm.cdf(Z) + sigma * norm.pdf(Z)
-
+        # for i in range(sigma.shape[0]):
+        #     if sigma[i] > 0:
+        #         Z[i] = improve[i] / sigma[i]
+        #     else:
+        #         Z[i] = 0
+        #     EI = improve * norm.cdf(Z) + sigma * norm.pdf(Z)
+        Z = np.where(sigma == 0, 0, improve / sigma)
+        ei = improve * norm.cdf(Z) + sigma * norm.pdf(Z)
+        EI = np.where(sigma == 0, 0, ei)
+        # EI = np.maximum(EI, 0)
         X_next = self.X_s[np.argmax(EI)]
 
         return X_next, EI
@@ -111,7 +118,7 @@ class BayesianOptimization:
         # If the next proposed point is one that has already been sampled,
         # optimization should be stopped early
 
-        for _ in range(0, iterations):
+        for _ in range(iterations):
             # next best sample location
             X_next, _ = self.acquisition()
 
