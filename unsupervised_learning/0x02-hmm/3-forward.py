@@ -50,8 +50,9 @@ def forward(Observation, Emission, Transition, Initial):
     # or => forward[:, 0] = Initial.T * Emission[:, Observation[0]]
     for t in range(1, T):
         for s in range(N):
-            T_mul_E = Transition[:, s] * Emission[s, Observation[t]]
-            forward[s, t] = forward[:, t - 1].dot(T_mul_E)
+            # T_mul_E = Transition[:, s] * Emission[s, Observation[t]]
+            sum_mul =np.matmul(forward[:, t - 1], Transition[:, s])
+            forward[s, t] = sum_mul * Emission[s, Observation[t]]
 
     P = np.sum(forward[:, T - 1])
 
