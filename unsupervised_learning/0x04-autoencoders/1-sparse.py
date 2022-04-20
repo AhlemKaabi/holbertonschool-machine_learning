@@ -3,6 +3,7 @@
     Autoencoders - Sparse Autoencoder
     -> A Regularized Autoencoder.
 """
+from sys import pycache_prefix
 import tensorflow.keras as keras
 
 
@@ -46,11 +47,11 @@ def autoencoder(input_dims, hidden_layers, latent_dims, lambtha):
     for e in hidden_layers:
         encode_hidden = keras.layers.Dense(e, activation='relu')(encode_hidden)
 
-    regularization = keras.regularizers.L1(lambtha)
-    encode_output_hidden = keras.layer.Dense(latent_dims,
-                                             activation='relu',
-                                             kernel_regularizer=regularization
-                                             )(encode_hidden)
+    regularization = keras.regularizers.l1(lambtha)
+    encode_output_hidden = keras.layers.Dense(latent_dims,
+                                              activation='relu',
+                                              kernel_regularizer=regularization
+                                              )(encode_hidden)
 
     encoder = keras.Model(Input, encode_output_hidden)
 
@@ -59,16 +60,17 @@ def autoencoder(input_dims, hidden_layers, latent_dims, lambtha):
     #                     hidden layers (inversed) =>
     #                                     output layer (input_dims)
     reversed_list = hidden_layers[::-1]
+    print(reversed_list)
 
     decode_hidden_input = keras.layers.Input(shape=(latent_dims,))
     decode_hidden = decode_hidden_input
     for d in reversed_list:
         decode_hidden = keras.layers.Dense(d, activation='relu')(decode_hidden)
 
-    decode_output = keras.layer.Dense(input_dims,
-                                      activation='sigmoid')(decode_hidden)
+    decode_output = keras.layers.Dense(input_dims,
+                                       activation='sigmoid')(decode_hidden)
 
-    decoder = keras.Model(decode_hidden, decode_output)
+    decoder = keras.Model(decode_hidden_input, decode_output)
 
     autoencoder = keras.Model(Input, decoder(encoder(Input)))
     autoencoder.compile(optimizer='adam', loss='binary_crossentropy')
