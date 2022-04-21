@@ -37,8 +37,6 @@ def autoencoder(input_dims, hidden_layers, latent_dims):
     """
     Input = keras.layers.Input(shape=(input_dims,))
 
-    # encoder Model
-    # input layer (input_dims) => hidden layers => output layer (latent_dims)
     encode_hidden = Input
     for e in hidden_layers:
         encode_hidden = keras.layers.Dense(e, activation='relu')(encode_hidden)
@@ -48,10 +46,6 @@ def autoencoder(input_dims, hidden_layers, latent_dims):
 
     encoder = keras.Model(Input, encode_output_hidden)
 
-    # decoder Model
-    # input layer (latent_dims) =>
-    #                     hidden layers (inversed) =>
-    #                                     output layer (input_dims)
     reversed_list = hidden_layers[::-1]
 
     decode_hidden_input = keras.layers.Input(shape=(latent_dims,))
