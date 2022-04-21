@@ -67,7 +67,6 @@ def autoencoder(input_dims, hidden_layers, latent_dims):
     encoder = keras.Model(inputs,
                           [z_mean, z_log_sigma, Z_layer],
                           name='encoder')
-    encoder.compile(optimizer='adam', loss='binary_crossentropy')
     # Create decoder
     latent_inputs = keras.Input(shape=(latent_dims,), name='z_sampling')
     x = latent_inputs
@@ -77,7 +76,6 @@ def autoencoder(input_dims, hidden_layers, latent_dims):
     decoder_output = keras.layers.Dense(input_dims, activation='sigmoid')(x)
 
     decoder = keras.Model(latent_inputs, decoder_output, name='decoder')
-    decoder.compile(optimizer='adam', loss='binary_crossentropy')
     # instantiate VAE model
     outputs = decoder(encoder(inputs)[2])
     vae = keras.Model(inputs, outputs, name='vae_mlp')
@@ -102,7 +100,8 @@ def autoencoder(input_dims, hidden_layers, latent_dims):
             vae_loss = keras.backend.mean(reconstruction_loss + kl_loss)
             return(vae_loss)
         return loss
-
+    encoder.compile(optimizer='adam', loss='binary_crossentropy')
+    decoder.compile(optimizer='adam', loss='binary_crossentropy')
     vae.compile(optimizer='adam', loss=loss_function(inputs, outputs,
                                                      input_dims, z_mean,
                                                      z_log_sigma))
