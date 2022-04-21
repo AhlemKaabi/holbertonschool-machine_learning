@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-    Autoencoders - "Vanilla" Autoencoder
+    Autoencoders - Vanilla Autoencoder
 """
 import tensorflow.keras as keras
 
@@ -35,24 +35,31 @@ def autoencoder(input_dims, hidden_layers, latent_dims):
     decoder, which should use sigmoid **
 
     """
-    input_en = keras.Input(shape=(input_dims,))
-    enc = keras.layers.Dense(hidden_layers[0],
-                             activation='relu')(input_en)
-    for i in hidden_layers[1::]:
-        enc = keras.layers.Dense(i, activation='relu')(enc)
+    Input = keras.layers.Input(shape=(input_dims,))
 
-    lt = keras.layers.Dense(latent_dims, activation='relu')(enc)
+    encode_hidden = Input
+    for e in hidden_layers:
+        encode_hidden = keras.layers.Dense(e, activation='relu')(encode_hidden)
 
-    encoder = keras.Model(input_en, lt)
+    encode_output_hidden = keras.layer.Dense(latent_dims,
+                                             activation='relu')(encode_hidden)
 
-    input_dec = keras.Input(shape=(latent_dims,))
+    encoder = keras.Model(Input, encode_output_hidden)
 
-    dec = keras.layers.Dense(hidden_layers[-1], activation='relu')(input_dec)
+    reversed_list = hidden_layers[::-1]
 
-    for i in hidden_layers[-2::-1]:
-        dec = keras.layers.Dense(i, activation='relu')(dec)
-    dec = keras.layers.Dense(input_dims, activation='sigmoid')(dec)
-    decoder = keras.Model(input_dec, dec)
-    autoen = keras.Model(input_en, decoder(encoder(input_en)))
-    autoen.compile(loss='binary_crossentropy', optimizer='adam')
-    return encoder, decoder, autoen
+    decode_hidden_input = keras.layers.Input(shape=(latent_dims,))
+    decode_hidden = decode_hidden_input
+
+    for d in reversed_list:
+        decode_hidden = keras.layers.Dense(d, activation='relu')(decode_hidden)
+
+    decode_output = keras.layer.Dense(input_dims,
+                                      activation='sigmoid')(decode_hidden)
+
+    decoder = keras.Model(decode_hidden, decode_output)
+
+    autoencoder = keras.Model(Input, decoder(encoder(Input)))
+    autoencoder.compile(optimizer='adam', loss='binary_crossentropy')
+
+    return encoder, decoder, autoencoder
