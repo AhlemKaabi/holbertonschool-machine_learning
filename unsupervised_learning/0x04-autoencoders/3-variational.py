@@ -82,16 +82,27 @@ def autoencoder(input_dims, hidden_layers, latent_dims):
     outputs = decoder(encoder(inputs)[2])
     vae = keras.Model(inputs, outputs, name='vae_mlp')
 
-    reconstruction_loss = keras.losses.binary_crossentropy(inputs, outputs)
-    reconstruction_loss *= input_dims
+    def loss_function(inputs, outputs, input_dims, z_mean, z_log_sigma):
+        """
+        loss function
+        """
+        def loss(inputs, outputs):
+            """
+            loss
+            """
+            reconstruction_loss = keras.losses.binary_crossentropy(inputs,
+                                                                   outputs)
+            reconstruction_loss *= input_dims
 
-    sq_mean = keras.backend.square(z_mean)
-    ex_sig = keras.backend.exp(z_log_sigma)
-    kl_loss = 1 + z_log_sigma - sq_mean - ex_sig
-
-    kl_loss = keras.backend.sum(kl_loss, axis=-1)
-    kl_loss *= -0.5
-    vae_loss = keras.backend.mean(reconstruction_loss + kl_loss)
-    vae.add_loss(vae_loss)
-    vae.compile(optimizer='adam')
+            sq_mean = keras.backend.square(z_mean)
+            ex_sig = keras.backend.exp(z_log_sigma)
+            kl_loss = 1 + z_log_sigma - sq_mean - ex_sig
+            kl_loss = keras.backend.sum(kl_loss, axis=-1)
+            kl_loss *= -0.5
+            vae_loss = keras.backend.mean(reconstruction_loss + kl_loss)
+            return(vae_loss)
+        return loss
+    vae.compile(optimizer='adam', loss=loss_function(inputs, outputs,
+                                                     input_dims, z_mean,
+                                                     z_log_sigma))
     return encoder, decoder, vae
