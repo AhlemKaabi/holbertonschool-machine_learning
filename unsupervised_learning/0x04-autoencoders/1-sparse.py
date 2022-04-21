@@ -3,7 +3,6 @@
     Autoencoders - Sparse Autoencoder
     -> A Regularized Autoencoder.
 """
-from sys import pycache_prefix
 import tensorflow.keras as keras
 
 
