@@ -100,8 +100,7 @@ def autoencoder(input_dims, hidden_layers, latent_dims):
             vae_loss = keras.backend.mean(reconstruction_loss + kl_loss)
             return(vae_loss)
         return loss
-    encoder.compile(optimizer='adam', loss='binary_crossentropy')
-    decoder.compile(optimizer='adam', loss='binary_crossentropy')
+    
     vae.compile(optimizer='adam', loss=loss_function(inputs, outputs,
                                                      input_dims, z_mean,
                                                      z_log_sigma))
