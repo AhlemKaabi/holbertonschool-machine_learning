@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-    Autoencoders - Vanilla Autoencoder
+    Autoencoders - "Vanilla" Autoencoder
 """
 import tensorflow.keras as keras
 
@@ -35,31 +35,34 @@ def autoencoder(input_dims, hidden_layers, latent_dims):
     decoder, which should use sigmoid **
 
     """
-    Input = keras.layers.Input(shape=(input_dims,))
+    # encoder
+    input_encoder = keras.Input(shape=(input_dims,))
 
-    encode_hidden = Input
-    for e in hidden_layers:
-        encode_hidden = keras.layers.Dense(e, activation='relu')(encode_hidden)
+    encode_hidden = keras.layers.Dense(hidden_layers[0],
+                             activation='relu')(input_encoder)
+    for i in hidden_layers[1::]:
+        encode_hidden = keras.layers.Dense(i, activation='relu')(encode_hidden)
 
-    encode_output_hidden = keras.layer.Dense(latent_dims,
-                                             activation='relu')(encode_hidden)
+    latent_space = keras.layers.Dense(latent_dims,
+                                      activation='relu')(encode_hidden)
 
-    encoder = keras.Model(Input, encode_output_hidden)
+    encoder = keras.Model(input_encoder, latent_space)
 
-    reversed_list = hidden_layers[::-1]
+	# decoder
+    input_decoder = keras.Input(shape=(latent_dims,))
 
-    decode_hidden_input = keras.layers.Input(shape=(latent_dims,))
-    decode_hidden = decode_hidden_input
+    decode_hidden = keras.layers.Dense(hidden_layers[-1],
+                             activation='relu')(input_decoder)
 
-    for d in reversed_list:
-        decode_hidden = keras.layers.Dense(d, activation='relu')(decode_hidden)
+    for i in hidden_layers[-2::-1]:
+        decode_hidden = keras.layers.Dense(i, activation='relu')(decode_hidden)
 
-    decode_output = keras.layer.Dense(input_dims,
-                                      activation='sigmoid')(decode_hidden)
+    decode_hidden = keras.layers.Dense(input_dims,
+                                       activation='sigmoid')(decode_hidden)
 
-    decoder = keras.Model(decode_hidden, decode_output)
+    decoder = keras.Model(input_decoder, decode_hidden)
 
-    autoencoder = keras.Model(Input, decoder(encoder(Input)))
-    autoencoder.compile(optimizer='adam', loss='binary_crossentropy')
-
+	# autoencoder
+    autoencoder = keras.Model(input_encoder, decoder(encoder(input_encoder)))
+    autoencoder.compile(loss='binary_crossentropy', optimizer='adam')
     return encoder, decoder, autoencoder
