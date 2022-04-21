@@ -2,6 +2,7 @@
 """
     Autoencoders - "Vanilla" Autoencoder
 """
+import os
 import tensorflow.keras as keras
 
 
