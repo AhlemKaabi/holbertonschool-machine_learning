@@ -84,7 +84,7 @@ def autoencoder(input_dims, hidden_layers, latent_dims):
         """
         loss function
         """
-        def loss():
+        def loss(inputs, outputs):
             """
             loss
             """
