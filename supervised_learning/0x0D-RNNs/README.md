@@ -42,4 +42,7 @@ more details watch this video! [Illustrated Guide to LSTM's and GRU's: A step by
     * Applications of RNN
 
 * [Understanding LSTM Networks](http://colah.github.io/posts/2015-08-Understanding-LSTMs/)
-	* how it works step by steb with functions used!
+	* how it works step by steb with functions used
+
+
+***Holberton School project - Machine learning Specialization***
