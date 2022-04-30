@@ -83,7 +83,7 @@ class BidirectionalCell():
         """
         combine = np.concatenate((h_next, x_t), axis=1)
 
-        h_prev = np.matmul(combine, self.Whf) + self.bhf
+        h_prev = np.matmul(combine, self.Whb) + self.bhb
         h_prev = np.tanh(h_prev)
 
         return h_prev
