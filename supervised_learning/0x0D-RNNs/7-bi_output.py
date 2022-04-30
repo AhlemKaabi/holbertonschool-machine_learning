@@ -83,7 +83,33 @@ class BidirectionalCell():
         """
         combine = np.concatenate((h_next, x_t), axis=1)
 
-        h_prev = np.matmul(combine, self.Whf) + self.bhf
+        h_prev = np.matmul(combine, self.Whb) + self.bhb
         h_prev = np.tanh(h_prev)
 
         return h_prev
+
+    def output(self, H):
+        """
+        Method:
+            Calculates all outputs for the RNN.
+
+        Parameters:
+            H (numpy.ndarray of shape (t, m, 2 * h)):
+                Contains the concatenated hidden states from both directions,
+                excluding their initialized states.
+                - t: the number of time steps.
+                - m: the batch size for the data.
+                - h: the dimensionality of the hidden states.
+
+        Returns:
+            Y: the outputs
+        """
+        t, m, _ = H.shape
+        Y = np.zeros((t, m, self.Wy.shape[1]))
+
+        for steps in range(t):
+            Y[steps] = np.matmul(H[steps], self.Wy) + self.by
+            Y[steps] = np.exp(Y[steps]) / np.sum(np.exp(Y[steps]),
+                                                 axis=1, keepdims=True)
+
+        return Y
