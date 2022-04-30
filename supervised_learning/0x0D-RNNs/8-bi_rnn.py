@@ -44,7 +44,8 @@ def bi_rnn(bi_cell, X, h_0, h_t):
         forward_X = h_next[step]
         backword_X = h_prev[t - step - 1]
     # H shape (t, m, 2 * h)
-    H = np.concatenate((h_prev, h_next), axis=2)
+    # starting with the next, next next that add the previous, previous ...
+    H = np.concatenate((h_next, h_prev), axis=2)
     Y = bi_cell.output(H)
 
     return H, np.array(Y)
