@@ -70,6 +70,7 @@ class LSTMCell():
         The output of the cell should use a softmax activation function
         **
         """
+        # http://colah.github.io/posts/2015-08-Understanding-LSTMs/
         combine = np.concatenate((h_prev, x_t), axis=1)
 
         # forget gate
