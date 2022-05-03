@@ -74,14 +74,15 @@ Loss functions are available in the losses library. One of two required argument
 from keras import losses
 ```
 Partial list of available loss functions:
-	mean_squared_error
-	mean_absolute _error
-	hinge
-	mean_absolute_percentage _error
-	mean_squared_logarithmic_error
-	Poisson
-	binary_crossentropy
-	categorical_crossentropy
+
+		mean_squared_error
+		mean_absolute _error
+		hinge
+		mean_absolute_percentage _error
+		mean_squared_logarithmic_error
+		Poisson
+		binary_crossentropy
+		categorical_crossentropy
 
 ***Holberton School repository projects - Machine learning Specialization***
 
