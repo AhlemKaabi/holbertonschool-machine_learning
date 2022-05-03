@@ -43,9 +43,45 @@
 
 * [0x01. Clustering ](./unsupervised_learning/0x01-clustering/)
 
-* [ 0x02. Hidden Markov Models](./unsupervised_learning/0x02-hmm/)
+* [0x02. Hidden Markov Models](./unsupervised_learning/0x02-hmm/)
 
 * [0x03. Hyperparameter Tuning](./unsupervised_learning/0x03-hyperparameter_tuning/)
+
+* [0x04. Autoencoders](./unsupervised_learning/0x04-autoencoders/)
+
+### **Machine Learning - Supervised Learning**
+
+* [0x0D. RNNs](./supervised_learning/0x0D-RNNs/)
+
+
+
+## **Machine Learning Concepts and Terminology**
+
+[](https://www.activestate.com/resources/quick-reads/what-is-a-keras-model/)
+
+* `Accuracy.` Calculates the percentage of predicted values (yPred) that match actual values (yTrue).
+* `Batch.` A set of N samples. Each sample in a batch is processed independently, in parallel with the other samples. Commonly referred to as a mini-batch.
+* `Batch Size.` Number of samples processed through to the network at one time.
+* `Convolutional Neural Network (CNN, or ConvNet).` Class of deep neural networks, commonly applied to analysis of visual imagery. Inspired by biological processes.
+* `Epoch.` One single pass over the entire training set to the network. An arbitrary cutoff in training, defined as ‘one pass over the entire dataset’.
+* `GPU.` Graphics Processing Unit. A TensorFlow processor platform that shows better flexibility and programmability for irregular computations, such as small batches. NVidia CUDA card requirement.
+* `Gradient.` Slope of a function. Gradient measures the change in all weights with regard to the change in error.
+* `Layer.` Instances of the layer() class are the basic building blocks in Keras neural networks. Consists of a tensor-in tensor-out computation function (the layer’s call method) and some state, held in TensorFlow variables.
+* `Loss (L).` Measure of how far a model’s predictions are from its label. Metric that represents how good/bad a model is. Objective is to find a set of weights and biases that minimize loss. To determine loss, a model defines a loss function. Linear regression models typically use mean squared error while logistic regression models use Log Loss, for loss function.
+
+Loss functions are available in the losses library. One of two required arguments for compiling a Keras model. To import the losses library, enter:
+```
+from keras import losses
+```
+Partial list of available loss functions:
+	mean_squared_error
+	mean_absolute _error
+	hinge
+	mean_absolute_percentage _error
+	mean_squared_logarithmic_error
+	Poisson
+	binary_crossentropy
+	categorical_crossentropy
 
 ***Holberton School repository projects - Machine learning Specialization***
 
