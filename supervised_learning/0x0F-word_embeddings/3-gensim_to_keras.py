@@ -12,7 +12,7 @@ def gensim_to_keras(model):
 
     Parameters
     ----------
-    model : trained gensim word2vec models
+    model : trained gensim word2vec models.
 
     Returns
     -------
