@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-	Extract Word2Vec 
+    Extract Word2Vec
 """
 from tensorflow.keras.layers import Embedding
 
