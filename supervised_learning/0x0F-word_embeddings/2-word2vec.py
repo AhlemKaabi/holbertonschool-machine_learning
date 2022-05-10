@@ -43,8 +43,7 @@ def word2vec_model(sentences, size=100, min_count=5, window=5,
                      negative=negative,
                      seed=seed,
                      workers=workers,
-                     sg=cbow)
-
-    model.train([["hello", "world"]], total_examples=1, epochs=1)
-
+                     sg=not cbow,
+                     iter=iterations)
+	# sg=not cbow default 1 -> 1 for skip-gram; otherwise CBOW.
     return model
