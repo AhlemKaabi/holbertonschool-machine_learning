@@ -45,5 +45,5 @@ def word2vec_model(sentences, size=100, min_count=5, window=5,
                      workers=workers,
                      sg=not cbow,
                      iter=iterations)
-	# sg=not cbow default 1 -> 1 for skip-gram; otherwise CBOW.
+    # sg=not cbow default 1 -> 1 for skip-gram; otherwise CBOW.
     return model
