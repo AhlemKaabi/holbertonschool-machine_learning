@@ -5,6 +5,7 @@
 """
 import numpy as np
 
+
 def n_gram_generator(sentence, n=2):
     """N-gram generator"""
     n_grams = []
