@@ -42,14 +42,16 @@ class RNNEncoder(tf.keras.layers.Layer):
         Method:
         -------
             Initializes the hidden states for the RNN cell to a
-              tensor of zeros.
+            tensor of zeros.
 
         Returns:
         --------
               tensor (shape (batch, units))
                 containing the initialized hidden states.
         """
-        return tf.zeros((self.batch, self.units))
+        # https://www.tensorflow.org/api_docs/python/tf/keras/initializers/Zeros
+        initializer = tf.keras.initializers.Zeros()
+        return initializer(shape=(self.batch, self.units))
 
     def call(self, x, initial):
         """
