@@ -33,7 +33,7 @@ class RNNEncoder(tf.keras.layers.Layer):
         self.embedding = tf.keras.layers.Embedding(vocab, embedding)
         # Gated Recurrent Unit  a keras GRU layer with #units
         self.gru = tf.keras.layers.GRU(self.units,
-                                       kernel_initializer="glorot_uniform",
+                                       recurrent_initializer="glorot_uniform",
                                        return_sequences=True,
                                        return_state=True)
 
