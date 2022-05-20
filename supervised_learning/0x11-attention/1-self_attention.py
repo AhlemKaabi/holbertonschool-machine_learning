@@ -20,6 +20,7 @@ class SelfAttention(tf.keras.layers.Layer):
             units (integer): representing the number of hidden units
             in the alignment model
         """
+        # https://stackoverflow.com/questions/576169/understanding-python-super-with-init-methods
         super().__init__()
         # Dense layer with units units, to be applied to the previous decode
         # hidden state
