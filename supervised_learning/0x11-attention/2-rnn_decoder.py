@@ -24,12 +24,14 @@ class RNNDecoder(tf.keras.layers.Layer):
             batch (integer): batch size
         """
         super(RNNDecoder, self).__init__()
+        self.batch = batch
+        self.units = units
         # a keras Embedding layer that converts words from the vocabulary into
         # an embedding vector
         self.embedding = tf.keras.layers.Embedding(vocab, embedding)
         # Gated Recurrent Unit:  a keras GRU layer with #units
         self.gru = tf.keras.layers.GRU(units,
-                                       kernel_initializer="glorot_uniform",
+                                       recurrent_initializer="glorot_uniform",
                                        return_sequences=True,
                                        return_state=True)
         # Dense layer with #vocab units
