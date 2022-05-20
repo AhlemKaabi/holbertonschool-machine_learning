@@ -20,6 +20,7 @@ class SelfAttention(tf.keras.layers.Layer):
             units (integer): representing the number of hidden units
             in the alignment model
         """
+        super().__init__()
         # Dense layer with units units, to be applied to the previous decode
         # hidden state
         self.W = tf.keras.layers.Dense(units)
