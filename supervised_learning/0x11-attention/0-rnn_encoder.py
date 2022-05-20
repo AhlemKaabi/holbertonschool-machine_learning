@@ -24,6 +24,8 @@ class RNNEncoder(tf.keras.layers.Layer):
 
             batch (integer): representing the batch size
         """
+        # Initialize the layer
+        super(RNNEncoder, self).__init__()
         self.batch = batch
         self.units = units
         # a keras Embedding layer that converts words from the vocabulary into
