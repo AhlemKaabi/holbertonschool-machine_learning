@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """ Transformer Decoder Block  """
 import tensorflow as tf
 MultiHeadAttention = __import__('6-multihead_attention').MultiHeadAttention
