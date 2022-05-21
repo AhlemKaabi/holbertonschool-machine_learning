@@ -63,29 +63,17 @@ class MultiHeadAttention(tf.keras.layers.Layer):
         # https://uvadlc-notebooks.readthedocs.io/en/latest/tutorial_notebooks/tutorial6/Transformers_and_MHAttention.html
         batch_size, seq_len, _ = Q.shape
         QWq = self.Wq(Q)
-        # QWq.shape: (50, 15, 512)
         KWk = self.Wk(K)
         VWv = self.Wv(V)
         param = (batch_size, seq_len, self.h, self.depth)
         QWq = tf.reshape(QWq, param)
-        # QWq.shape: (50, 15, 8, 64)
         QWq = tf.transpose(QWq, perm=[0, 2, 1, 3])
-        # QWq.shape: (50, 8, 15, 64)
         KWk = tf.reshape(KWk, param)
         KWk = tf.transpose(KWk, perm=[0, 2, 1, 3])
         VWv = tf.reshape(VWv, param)
         VWv = tf.transpose(VWv, perm=[0, 2, 1, 3])
         filtered_value, attention_filter = sdp_attention(QWq, KWk, VWv, mask)
-        # filtered_value.shape: (..., seq_len_q, dv): (50, 8, 15, 64)
         head_output = tf.transpose(filtered_value, perm=[0, 2, 1, 3])
-        # head_output.shape: (50, 15, 8, 64)
         concat = tf.reshape(head_output, (batch_size, seq_len, self.dm))
-        # concat.shape: (50, 15, 512)
         output = self.linear(concat)
-        # output.shape: (50, 15, 512)
         return output, attention_filter
-
-    # [0.06685878 0.06464797 0.06168237 ... 0.07111148 0.06448605
-    # 0.05386085]
-    #  [0.06893092 0.06967342 0.07954863 ... 0.04898299 0.06076638
-    # 0.06906604]
