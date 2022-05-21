@@ -74,9 +74,9 @@ class DecoderBlock(tf.keras.layers.Layer):
         norm_1 = self.layernorm1(attn1 + x)
 
         attn2, _ = self.mha2(
-            encoder_output,
-            encoder_output,
             norm_1,
+            encoder_output,
+            encoder_output,
             padding_mask
         )
         attn2 = self.dropout2(attn2, training=training)
