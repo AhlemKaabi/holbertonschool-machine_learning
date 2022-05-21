@@ -37,8 +37,8 @@ class MultiHeadAttention(tf.keras.layers.Layer):
         #     linear - a Dense layer with dm units,
         #       used to generate the attention output
         super(MultiHeadAttention, self).__init__()
-        self.h = h
         self.dm = dm
+        self.h = h
         self.depth = dm // h
         self.Wq = tf.keras.layers.Dense(dm)
         self.Wk = tf.keras.layers.Dense(dm)
@@ -60,28 +60,19 @@ class MultiHeadAttention(tf.keras.layers.Layer):
             w: tensor with last three dims
                 (..., h, seq_len_q, seq_len_v) contains attention w
         """
-        # https://uvadlc-notebooks.readthedocs.io/en/latest/tutorial_notebooks/tutorial6/Transformers_and_MHAttention.html
         batch_size = tf.shape(Q)[0]
-        seq_len = tf.shape(Q)[1]
-        QWq = self.Wq(Q)
-        # QWq.shape: (50, 15, 512)
-        KWk = self.Wk(K)
-        VWv = self.Wv(V)
-        param = (batch_size, seq_len, self.h, self.depth)
-        QWq = tf.reshape(QWq, param)
-        # QWq.shape: (50, 15, 8, 64)
-        QWq = tf.transpose(QWq, perm=[0, 2, 1, 3])
-        # QWq.shape: (50, 8, 15, 64)
-        KWk = tf.reshape(KWk, param)
-        KWk = tf.transpose(KWk, perm=[0, 2, 1, 3])
-        VWv = tf.reshape(VWv, param)
-        VWv = tf.transpose(VWv, perm=[0, 2, 1, 3])
-        filtered_value, attention_filter = sdp_attention(QWq, KWk, VWv, mask)
-        # filtered_value.shape: (..., seq_len_q, dv): (50, 8, 15, 64)
-        head_output = tf.transpose(filtered_value, perm=[0, 2, 1, 3])
-        # head_output.shape: (50, 15, 8, 64)
-        concat = tf.reshape(head_output, (batch_size, seq_len, self.dm))
-        # concat.shape: (50, 15, 512)
+        q = self.Wq(Q)
+        k = self.Wk(K)
+        v = self.Wv(V)
+        param = (batch_size, -1, self.h, self.depth)
+        q = tf.reshape(q, param)
+        q = tf.transpose(q, perm=[0, 2, 1, 3])
+        k = tf.reshape(k, param)
+        k = tf.transpose(k, perm=[0, 2, 1, 3])
+        v = tf.reshape(v, param)
+        v = tf.transpose(v, perm=[0, 2, 1, 3])
+        softmax, output1 = sdp_attention(q, k, v, mask)
+        softmax = tf.transpose(softmax, perm=[0, 2, 1, 3])
+        concat = tf.reshape(softmax, (batch_size, -1, self.dm))
         output = self.linear(concat)
-        # output.shape: (50, 15, 512)
-        return output, attention_filter
+        return output, output1
