@@ -79,7 +79,7 @@ class MultiHeadAttention(tf.keras.layers.Layer):
         # filtered_value.shape: (..., seq_len_q, dv): (50, 8, 15, 64)
         head_output = tf.transpose(filtered_value, perm=[0, 2, 1, 3])
         # head_output.shape: (50, 15, 8, 64)
-        concat = tf.reshape(head_output, (batch_size, seq_len, self.dm))
+        concat = tf.reshape(head_output, (batch_size, -1, self.dm))
         # concat.shape: (50, 15, 512)
         output = self.linear(concat)
         # output.shape: (50, 15, 512)
