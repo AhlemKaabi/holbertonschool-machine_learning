@@ -75,7 +75,7 @@ class MultiHeadAttention(tf.keras.layers.Layer):
         KWk = tf.transpose(KWk, perm=[0, 2, 1, 3])
         VWv = tf.reshape(VWv, param)
         VWv = tf.transpose(VWv, perm=[0, 2, 1, 3])
-        filtered_value, final_attention_filter = sdp_attention(QWq, KWk, VWv, mask)
+        filtered_value, attention_filter = sdp_attention(QWq, KWk, VWv, mask)
         # filtered_value.shape: (..., seq_len_q, dv): (50, 8, 15, 64)
         head_output = tf.transpose(filtered_value, perm=[0, 2, 1, 3])
         # head_output.shape: (50, 15, 8, 64)
@@ -83,4 +83,4 @@ class MultiHeadAttention(tf.keras.layers.Layer):
         # concat.shape: (50, 15, 512)
         output = self.linear(concat)
         # output.shape: (50, 15, 512)
-        return output, final_attention_filter
+        return output, attention_filter
