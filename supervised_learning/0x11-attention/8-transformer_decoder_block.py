@@ -82,9 +82,9 @@ class DecoderBlock(tf.keras.layers.Layer):
         attn2 = self.dropout2(attn2, training=training)
         norm_2 = self.layernorm2(attn2 + norm_1)
 
-        feedforward = self.dense_hidden(norm_2)
+        feedforward = self.dense_hidden(norm_1)
         feedforward = self.dense_output(feedforward)
 
-        feedforward = self.dropout3(norm_2, training=training)
+        feedforward = self.dropout3(feedforward, training=training)
         norm_3 = self.layernorm3(attn2 + norm_2)
         return norm_3
