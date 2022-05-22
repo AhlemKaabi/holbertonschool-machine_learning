@@ -52,6 +52,9 @@
 ### **Machine Learning - Supervised Learning**
 
 * [0x0D. RNNs](./supervised_learning/0x0D-RNNs/)
+* [0x0E. Time Series Forecasting](./supervised_learning/0x0E-time_series/)
+* [0x0F. Natural Language Processing - Word Embeddings](./supervised_learning/0x0F-word_embeddings/)
+* [0x10. Natural Language Processing - Evaluation Metrics](./supervised_learning/0x10-nlp_metrics/)
 
 
 
