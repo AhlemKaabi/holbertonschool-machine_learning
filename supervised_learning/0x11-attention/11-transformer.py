@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
-""" Transformer Network """
+"""Transformer Network"""
 import tensorflow as tf
 Encoder = __import__('9-transformer_encoder').Encoder
 Decoder = __import__('10-transformer_decoder').Decoder
 
 
 class Transformer(tf.keras.Model):
-    """ Create the decoder for a transformer """
-
-    def __init__(self, N, dm, h, hidden, input_vocab, target_vocab,
-                 max_seq_input, max_seq_target, drop_rate=0.1):
+    """transformer class"""
+    def __init__(self, N, dm, h, hidden, input_vocab,
+                 target_vocab, max_seq_input,
+                 max_seq_target,
+                 drop_rate=0.1):
         """
         Method:
         ------
@@ -28,31 +29,18 @@ class Transformer(tf.keras.Model):
             drop_rate: the dropout rate.
         """
         super(Transformer, self).__init__()
-        # the encoder layer.
-        self.encoder = Encoder(
-            N,
-            dm,
-            h,
-            hidden,
-            input_vocab,
-            max_seq_input,
-            drop_rate
-        )
-        # the decoder layer.
-        self.decoder = Decoder(
-            N,
-            dm,
-            h,
-            hidden,
-            target_vocab,
-            max_seq_target,
-            drop_rate
-        )
-        # a final Dense layer with target_vocab units.
+        self.encoder = Encoder(N, dm, h, hidden,
+                               input_vocab, max_seq_input,
+                               drop_rate)
+        self.decoder = Decoder(N, dm, h, hidden,
+                               target_vocab, max_seq_target,
+                               drop_rate)
         self.linear = tf.keras.layers.Dense(target_vocab)
 
-    def call(self, inputs, target, training, encoder_mask,
-             look_ahead_mask, decoder_mask):
+    def call(self, inputs, target, training,
+             encoder_mask,
+             look_ahead_mask,
+             decoder_mask):
         """
            Parameters:
            -----------
@@ -75,17 +63,7 @@ class Transformer(tf.keras.Model):
             a tensor of shape (batch, target_seq_len, dm) containing
             the decoder output.
         """
-        encoder_output = self.encoder(
-            inputs,
-            training,
-            encoder_mask
-        )
-        decoder_output = self.decoder(
-            target,
-            encoder_output,
-            training,
-            look_ahead_mask,
-            decoder_mask
-        )
-
-        return self.linear(decoder_output)
+        encoding = self.encoder(inputs, training, encoder_mask)
+        decoding = self.decoder(target, encoding, training,
+                                look_ahead_mask, decoder_mask)
+        return self.linear(decoding)
