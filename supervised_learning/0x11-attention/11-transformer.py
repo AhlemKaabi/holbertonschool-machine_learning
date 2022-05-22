@@ -49,7 +49,7 @@ class Transformer(tf.keras.Model):
             drop_rate
         )
         # a final Dense layer with target_vocab units.
-        self.linear = tf.keras.layers.Dense(units=target_vocab)
+        self.linear = tf.keras.layers.Dense(target_vocab)
 
     def call(self, inputs, target, training, encoder_mask,
              look_ahead_mask, decoder_mask):
@@ -75,9 +75,11 @@ class Transformer(tf.keras.Model):
             a tensor of shape (batch, target_seq_len, dm) containing
             the decoder output.
         """
-        encoder_output = self.encoder(inputs,
-                                      training,
-                                      encoder_mask)
+        encoder_output = self.encoder(
+            inputs,
+            training,
+            encoder_mask
+        )
         decoder_output = self.decoder(
             target,
             encoder_output,
