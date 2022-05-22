@@ -60,7 +60,7 @@
 
 ## **Machine Learning Concepts and Terminology**
 
-[](https://www.activestate.com/resources/quick-reads/what-is-a-keras-model/)
+[Machine Learning Concepts and Terminology - section](https://www.activestate.com/resources/quick-reads/what-is-a-keras-model/)
 
 * `Accuracy.` Calculates the percentage of predicted values (yPred) that match actual values (yTrue).
 * `Batch.` A set of N samples. Each sample in a batch is processed independently, in parallel with the other samples. Commonly referred to as a mini-batch.
