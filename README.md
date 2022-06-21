@@ -55,6 +55,11 @@
 * [0x0E. Time Series Forecasting](./supervised_learning/0x0E-time_series/)
 * [0x0F. Natural Language Processing - Word Embeddings](./supervised_learning/0x0F-word_embeddings/)
 * [ 0x10. Natural Language Processing - Evaluation Metrics](./supervised_learning/0x10-nlp_metrics/)
+* [0x11. Attention](./supervised_learning/0x11-attention/)
+* [0x12. Transformer Applications](./supervised_learning/0x12-transformer_apps/)
+* 0x13. QA Bot
+
+## **Third Section**
 
 
 
