@@ -81,6 +81,11 @@ def train(env, Q, episodes=5000,
             # and reward (r)
             new_state, reward, done, info = env.step(action)
 
+            # Reward update
+            if done and reward == 0:
+                # should be updated to -1
+                reward = -1
+
             # Update
             # Q(s,a):= Q(s,a) + lr [R(s,a) + gamma * max Q(s',a') - Q(s,a)]
             # Q[new_state,:] : all the actions we can take from new state
