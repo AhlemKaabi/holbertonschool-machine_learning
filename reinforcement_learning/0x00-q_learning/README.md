@@ -21,7 +21,7 @@
 	* ![](./img/Markov%20Decision%20Processes%20(MDPs)%20-%20Structuring%20a%20Reinforcement%20Learning%20Problem.png)
 ## **Gym documentation**
 
-* Gym is a standard API for reinforcement learning, and a diverse collection of reference environments.
+* Gym is a standard API for reinforcement learning, and a diverse collection of reference environments - [Gym documentation](https://www.gymlibrary.ml/)
 
 
 ## **Resources**
