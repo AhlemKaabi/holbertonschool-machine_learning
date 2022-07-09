@@ -48,7 +48,7 @@ We use Lambda to robust the choice of N which avarage over many different Ns get
 * [Eligibility Traces in Reinforcement Learning](https://towardsdatascience.com/eligibility-traces-in-reinforcement-learning-a6b458c019d6)
 * [RL Course by David Silver - Lecture 4: Model-Free Prediction](https://www.youtube.com/watch?v=PnHCvfgC_ZA)
 * [RL Course by David Silver - Lecture 5: Model Free Control](https://www.youtube.com/watch?v=0g4j2k_Ggc4)
-
+* [RL book](http://incompleteideas.net/book/the-book-2nd.html?source=post_page---------------------------)
 # **More Algorithms**
 
 ## **First visit MC**
