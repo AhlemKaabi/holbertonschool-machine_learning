@@ -8,7 +8,7 @@ def from_file(filename, delimiter):
     """
     Method:
     -------
-    	Loads data from a file as a (pd.DataFrame)
+        Loads data from a file as a (pd.DataFrame)
 
     Parameters:
     -----------

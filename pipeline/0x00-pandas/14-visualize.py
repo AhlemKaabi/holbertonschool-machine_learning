@@ -8,7 +8,7 @@ from_file = __import__('2-from_file').from_file
 df = from_file('coinbaseUSD_1-min_data_2014-12-01_to_2019-01-09.csv', ',')
 
 # The column Weighted_Price should be removed
-df = df.drop(columns =['Weighted_Price'])
+df = df.drop(column=['Weighted_Price'])
 # Rename the column Timestamp to Date
 df.rename(columns={'Timestamp': 'Date'}, inplace=True)
 # Convert the timestamp values to date values
@@ -29,12 +29,12 @@ df["Volume_(Currency)"].fillna(0, inplace=True)
 
 # Plot the data from 2017 and beyond at daily intervals and group the values
 # of the same day such that:
-    # High: max
-    # Low: min
-    # Open: mean
-    # Close: mean
-    # Volume(BTC): sum
-    # Volume(Currency): sum
+# High: max
+# Low: min
+# Open: mean
+# Close: mean
+# Volume(BTC): sum
+# Volume(Currency): sum
 
 df_graph = pd.DataFrame()
 # groupby day and take the max
