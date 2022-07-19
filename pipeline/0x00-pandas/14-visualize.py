@@ -2,13 +2,11 @@
 
 import matplotlib.pyplot as plt
 import pandas as pd
-import numpy as np
 from_file = __import__('2-from_file').from_file
 
 df = from_file('coinbaseUSD_1-min_data_2014-12-01_to_2019-01-09.csv', ',')
-
 # The column Weighted_Price should be removed
-df = df.drop(column=['Weighted_Price'])
+df = df.drop(columns=['Weighted_Price'])
 # Rename the column Timestamp to Date
 df.rename(columns={'Timestamp': 'Date'}, inplace=True)
 # Convert the timestamp values to date values
@@ -48,8 +46,9 @@ df_graph['Volume_(Currency)'] = df['Volume_(Currency)'].resample('D').sum()
 df_graph["Open"] = df["Open"].resample('D').mean()
 df_graph["Close"] = df["Close"].resample('D').mean()
 
-
-df_graph = df_graph[df_graph.index >= np.datetime64('2017')]
+df_graph = df_graph.loc['2017-01-01 00:00:00':]
+# unauthorized module (numpy)
+# df_graph = df_graph[df_graph.index >= np.datetime64('2017')]
 
 # plt.figure(16, 8)
 df_graph.plot(figsize=(16, 8))
